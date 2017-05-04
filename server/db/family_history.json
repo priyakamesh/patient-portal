@@ -1,0 +1,16 @@
+[{"name": "Diabetes"},
+  {"name": "Thyroid"},
+  {"name": "Headache"},
+  {"name": "High Blood Pressure"},
+  {"name": "Low Blood Pressure"},
+  {"name": "Osteoarthritis"},
+  {"name": "Rheumatoid Arthritis"},
+  {"name": "Asthma"},
+  {"name": "Blood Disorders"},
+  {"name": "Breast Cancer"},
+  {"name": "Cardiovasular Health"},
+  {"name": "Overweight or Obesity"},
+  {"name": "Foodborne Illness"},
+  {"name": "Gynecologic Cancers"},
+  {"name": "Others"}
+]
