@@ -2,11 +2,11 @@
   "name": "patient-portal",
   "version": "1.0.0",
   "description": "",
-  "main": "client/app.js",
+  "main": "server/app.js",
   "scripts": {
     "db:reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
-    "start": "node client/bin/portal",
-    "startdev": "nodemon client/bin/portal",
+    "start": "node server/bin/portal",
+    "startdev": "nodemon server/bin/portal",
     "test": "nodemon --exec \"mocha --recursive\" -R list"
   },
   "repository": {
