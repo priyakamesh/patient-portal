@@ -1,63 +1,127 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema
-    .createTable('users', (t) =>{
+    .createTable('patients', (t) =>{
       t.increments()
       t.string('email').notNullable().unique()
       t.string('password')
-      t.string('first_name')
-      t.string('last_name')
+      t.string('firstname')
+      t.string('lastname')
       t.string('dob')
       t.string('ethnicity')
       t.string('address')
-      t.string('phone_number')
-      t.string('primary_insurance_provider')
-      t.string('primary_insurance_groupid')
-      t.string('primary_insurance_type')
-      t.string('secondary_insurance_provider')
-      t.string('secondary_insurance_groupid')
-      t.string('secondary_insurance_type')
-      t.specificType('social_history', knex.raw('text[]'))
-      t.specificType('family_history', knex.raw('text[]'))
-      t.specificType('allergy', knex.raw('text[]'))
-      t.specificType('past_allergy', knex.raw('text[]'))
-      t.string("curr_med_brand_name")
-      t.string("curr_med_drug_name")
-      t.string("curr_med_dosage")
-      t.string("curr_med_route")
-      t.string("dis_curr_med_brand_name")
-      t.string("dis_curr_med_drug_name")
-      t.string("dis_curr_med_dosage")
-      t.string("dis_curr_med_route")
-      t.string("proxy_name")
-      t.string("proxy_relation")
-      t.string("doctor_name")
-      t.string("doctor_address")
-      t.string("doctor_phone_number")
-      t.string("doctor_speciality")
+      t.string('phonenumber')
     })
 
-    .createTable('allergy', (t) => {
+    .createTable('doctors',(t) =>{
+      t.increments()
+      t.string('fullname')
+      t.string('speciality')
+      t.string('address')
+      t.string('phonenumber')
+    })
+
+    .createTable('patient_doctor', (t) =>{
+      t.increments()
+      t.integer('patient_id').unsigned().references('patients.id')
+      t.integer('doctor_id').unsigned().references('doctors.id')
+      t.integer(['patient_id', 'doctor_id']).unique()
+    })
+
+    .createTable('insurance_type', (t) =>{
       t.increments()
       t.string('name')
+      t.string('description')
     })
 
-    .createTable('familyhistory', (t) =>{
+    .createTable('insurance', (t) =>{
+      t.increments()
+      t.string('insuranceprovider')
+      t.string('groupid')
+      t.string('subscriberid')
+      t.integer('insurance_type_id').unsigned().references('insurance_type.id')
+      t.integer('patient_id').unsigned().references('patients.id')
+    })
+
+    .createTable('release_med_info', (t) =>{
+      t.increments()
+      t.string('fullname')
+      t.string('relation')
+      t.string('phonenumber')
+      t.integer('patient_id').unsigned().references('patients.id')
+    })
+
+    .createTable('history_type', (t) =>{
       t.increments()
       t.string('name')
+      t.string('description')
     })
 
-    .createTable('socialhistory', (t) =>{
+    .createTable('history', (t) =>{
       t.increments()
       t.string('name')
+      t.string('description')
+      t.integer('history_type_id').unsigned().references('history_type.id')
     })
 
+    .createTable('patient_history', (t) =>{
+      t.increments()
+      t.integer('patient_id').unsigned().references('patients.id')
+      t.integer('history_id').unsigned().references('history.id')
+      t.integer(['patient_id', 'history_id']).unique()
+    })
+
+    .createTable('allergy_type', (t) =>{
+      t.increments()
+      t.string('name')
+      t.string('description')
+    })
+
+    .createTable('allergy' ,(t) => {
+      t.increments()
+      t.string('name')
+      t.string('description')
+      t.integer('allergy_type_id').unsigned().references('allergy_type.id')
+    })
+
+    .createTable('patient_allergy', (t) =>{
+      t.increments()
+      t.integer('patient_id').unsigned().references('patients.id')
+      t.integer('allergy_id').unsigned().references('allergy.id')
+      t.integer(['patient_id', 'allergy_id']).unique()
+    })
+
+    .createTable('medication_type', (t) =>{
+      t.increments()
+      t.string('name')
+      t.string('description')
+    })
+
+    .createTable('medication', (t) =>{
+      t.increments()
+      t.string('brandname')
+      t.string('drugname')
+      t.string('dosage')
+      t.string('route')
+      t.integer('medication_type_id').unsigned().references('medication_type.id')
+      t.integer('patient_id').unsigned().references('patients.id')
+    })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
-    .dropTableIfExists('socialhistory')
-    .dropTableIfExists('familyhistory')
-    .dropTableIfExists('allergy')
-    .dropTableIfExists('users')
+  .dropTableIfExists('patient_doctor')
+  .dropTableIfExists('doctors')
+  .dropTableIfExists('insurance')
+  .dropTableIfExists('insurance_type')
+  .dropTableIfExists('release_med_info')
+  .dropTableIfExists('patient_history')
+  .dropTableIfExists('history')
+  .dropTableIfExists('history_type')
+  .dropTableIfExists('patient_allergy')
+  .dropTableIfExists('allergy')
+  .dropTableIfExists('allergy_type')
+  .dropTableIfExists('medication')
+  .dropTableIfExists('medication_type')
+  .dropTableIfExists('patients')
 };
