@@ -7,7 +7,8 @@ router.use(require('./allergy-route'))
 router.use(require('./history-route'))
 router.use(require('./patient-route'))
 router.use(require('./insurance-route'))
-router.use(require('./irelease_med_info-route'))
+router.use(require('./release_med_info-route'))
+router.use(require('./medication-route'))
 router.get('/',function (req,res) {
   res.json ({
     "doctors": "http://localhost:3000/api/v1/doctors",
@@ -22,7 +23,11 @@ router.get('/',function (req,res) {
     "addPatient": "http://localhost:3000/api/v1/patient/new",
     "insurance":"http://localhost:3000/api/v1/insurance",
     "primary_insurance": "http://localhost:3000/api/v1/primaryinsurance",
-    "secondary_insurance": "http://localhost:3000/api/v1/secondaryinsurance"
+    "secondary_insurance": "http://localhost:3000/api/v1/secondaryinsurance",
+    "release_med_info": "http://localhost:3000/api/v1/patient/:id/release_med_info",
+    "all medications": "http://localhost:3000/api/v1/patients/:id/medication",
+    "all current medications": "http://localhost:3000/api/v1//patients/:id/currentmedication"
+
   })
 })
 
