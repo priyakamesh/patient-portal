@@ -25,7 +25,7 @@ exports.up = function(knex, Promise) {
       t.increments()
       t.integer('patient_id').unsigned().references('patients.id')
       t.integer('doctor_id').unsigned().references('doctors.id')
-      t.integer(['patient_id', 'doctor_id']).unique()
+      t.unique(['patient_id', 'doctor_id'])
     })
 
     .createTable('insurance_type', (t) =>{
@@ -68,7 +68,9 @@ exports.up = function(knex, Promise) {
       t.increments()
       t.integer('patient_id').unsigned().references('patients.id')
       t.integer('history_id').unsigned().references('history.id')
-      t.integer(['patient_id', 'history_id']).unique()
+      t.unique(['patient_id', 'history_id'])
+      t.string("unit")
+      t.string("frequency")
     })
 
     .createTable('allergy_type', (t) =>{
@@ -88,7 +90,7 @@ exports.up = function(knex, Promise) {
       t.increments()
       t.integer('patient_id').unsigned().references('patients.id')
       t.integer('allergy_id').unsigned().references('allergy.id')
-      t.integer(['patient_id', 'allergy_id']).unique()
+      t.unique(['patient_id', 'allergy_id'])
     })
 
     .createTable('medication_type', (t) =>{
