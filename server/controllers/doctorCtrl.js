@@ -13,3 +13,9 @@ module.exports.getAllDoctors = (req,res,next) => {
     next(error);
   });
 }
+module.exports.addDoctor = ({body},res,next) =>{
+  Doctor.forge(body)
+  .save()
+  .then(() => res.status(200).json({"msg": "Doctor Added Successfully"}))
+  .catch((err) =>{ next(err)})
+}
