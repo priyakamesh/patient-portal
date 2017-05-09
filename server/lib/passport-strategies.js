@@ -6,11 +6,11 @@ const { knex } = require('../db/database');
 
 const Patient = require('../models/patient');
 
-passport.serializeUser((patient, done) => done(null, user.id));
+passport.serializeUser((patient, done) => done(null, patient.id));
 
 passport.deserializeUser( (id, done) => {
   knex('patient').where({id}).first()
-  .then( (user) => done(null, user) )
+  .then( (patient) => done(null, patient) )
   .catch( (err) => done(err, null) )
 });
 
@@ -20,18 +20,18 @@ const localStrategy = new Strategy({
   },
   (email, passwordStr, done) => {
     Patient.findOneByEmail(email)
-    .then( (user) => {
-      if (user) {
+    .then( (patient) => {
+      if (patient) {
         return Promise.all([
-            user,
-            user.comparePass(passwordStr)
+            patient,
+            patient.comparePass(passwordStr)
           ])
       }
       done( null, null, { msg: 'Email does not exist in our system'})
     })
-    .then( ([user, matches]) => {
+    .then( ([patient, matches]) => {
       if (matches) {
-        done(null, user, {msg: 'Successfuly logged in'})
+        done(null, patient, {msg: 'Successfuly logged in'})
       } else {
         done( null, null, {msg: 'Password does not match'})
       }

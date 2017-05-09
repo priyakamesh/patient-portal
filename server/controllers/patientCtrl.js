@@ -1,8 +1,21 @@
 'use strict';
 
+const passport = require('passport');
 const { bookshelf } = require('../db/database');
 const Patient= require('../models/patient')
 const Patient_allergy = require('../models/patient_allergy')
+
+module.exports.checkPatient = (req,res,next) =>{
+  passport.authenticate('local', (err,patient,msg) =>{
+    if(err) return next(err)
+    if(!patient) return res.json({"msg": "Email not found"})
+      req.login(patient, (err) => {
+      if (err) return next(err)
+      res.redirect('/')
+    })
+  })(req, res, next)
+}
+
 module.exports.getPatient = ({params:{id}},res,next)=>{
   Patient.getPatient(id)
   .then((patient) =>{
@@ -12,11 +25,16 @@ module.exports.getPatient = ({params:{id}},res,next)=>{
     next(err)
   })
 }
-module.exports.addPatient = ({body},res,next) =>{
-  Patient.forge(body)
-  .save()
-  .then(() => res.status(200).json({"msg": "Patient Added Successfully"}))
-  .catch((err) =>{ next(err)})
+module.exports.addPatient = ({body: {email, password, confirmation}},res,next) =>{
+  if(password === confirmation)
+    Patient.findOneByEmail(email)
+    .then((patient) =>{
+      if(patient) return res.json({"msg": "Email is already registered"})
+      return Patient.forge({email,password})
+      .save()
+      .then(() => res.status(200).json({"msg": "Patient Added Successfully"}))
+      .catch((err) =>{ next(err)})
+  })
 }
 module.exports.deletePatient = ({params:{id}},res,next) =>{
   Patient.deletePatient(id)

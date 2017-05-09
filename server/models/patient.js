@@ -1,6 +1,8 @@
 'use strict'
 
 const { bookshelf } = require('../db/database')
+const { compare } = require('bcryptjs');
+
 
 require('./patient_allergy')
 require('./allergy')

@@ -1,9 +1,10 @@
 'use strict';
 
 const { Router } = require('express');
-const { getPatient, addPatient, deletePatient,getAllAllergy, getAllHistory, getAllDoctor}= require('../controllers/patientCtrl')
+const { getPatient, addPatient, deletePatient,getAllAllergy, getAllHistory, getAllDoctor, checkPatient}= require('../controllers/patientCtrl')
 const router = Router();
 
+router.post('/patient/check', checkPatient)
 router.get('/patient/:id', getPatient)
 router.post('/patient/new', addPatient)
 router.delete('/patient/:id', deletePatient)

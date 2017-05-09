@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 // require('dotenv').config()
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.use('/api/v1/', routes)
 // catch 404 and forward to error handler
