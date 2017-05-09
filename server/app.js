@@ -2,11 +2,35 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var cors = require('cors')
+var cors = require('cors');
+const passport = require('passport');
+const session = require('express-session');
+const KnexSessionStore = require('connect-session-knex')(session);
+const cookieParser = require('cookie-parser');
+const { knex } = require('./db/database');
 var routes = require('./routes/');
 
 var app = express();
+
+//middlewaes
 app.use(cors())
+app.use(cookieParser('secretpatient'));
+app.use(session({cookie: {maxAge: 600000}, secret: 'secretpatient', resave: true, saveUninitialized: false}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(session({
+  store: new KnexSessionStore({
+    knex,
+    tablename: 'sessions'
+  }),
+  resave: false,
+  saveUninitialized: false,
+  secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
+}));
+
+require('./lib/passport-strategies')
+app.use(passport.initialize())
+app.use(passport.session())
+
 // This 'if' statement prevents application log messages from
 // displaying in the stdout when the tests are run
 if (process.env.NODE_ENV !== 'test') {
@@ -14,7 +38,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 // require('dotenv').config()
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.use('/api/v1/', routes)
 // catch 404 and forward to error handler
