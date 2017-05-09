@@ -15,7 +15,7 @@ var app = express();
 //middlewaes
 app.use(cors())
 app.use(cookieParser('secretpatient'));
-app.use(session({cookie: {maxAge: 60000}, secret: 'secretpatient', resave: true, saveUninitialized: false}));
+app.use(session({cookie: {maxAge: 600000}, secret: 'secretpatient', resave: true, saveUninitialized: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({
   store: new KnexSessionStore({

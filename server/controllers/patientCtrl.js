@@ -11,7 +11,7 @@ module.exports.checkPatient = (req,res,next) =>{
     if(!patient) return res.json({"msg": "Email not found"})
       req.login(patient, (err) => {
       if (err) return next(err)
-      res.redirect('/')
+      res.json({"msg" : "login successful"})
     })
   })(req, res, next)
 }
@@ -73,4 +73,10 @@ module.exports.getAllDoctor= ({params: {patient_id}},res,next) =>{
   .catch((err) =>{
     next(err);
   })
+}
+
+// logs out user and redirects to login page
+module.exports.destroy = (req, res, next) => {
+
+  res.json({"msg": "Logged out successfully"})
 }

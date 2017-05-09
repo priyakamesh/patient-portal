@@ -9,6 +9,7 @@ const Doctor = bookshelf.Model.extend({
    patient: function(){ return this.belongsToMany('Patient').through('Patient_doctor')}
 },{
   getAllDoctors: function(){
+    console.log("get all doctors in model")
     return this.forge()
     .fetchAll()
     .then((doctors) =>{

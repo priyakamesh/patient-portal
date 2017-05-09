@@ -2,10 +2,10 @@
 
 const { Router } = require('express');
 const router = Router();
+router.use(require('./patient-route'))
 router.use(require('./doctors-route'))
 router.use(require('./allergy-route'))
 router.use(require('./history-route'))
-router.use(require('./patient-route'))
 router.use(require('./insurance-route'))
 router.use(require('./release_med_info-route'))
 router.use(require('./medication-route'))

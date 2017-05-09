@@ -5,6 +5,7 @@ const { bookshelf } = require('../db/database');
 const Doctor = require('../models/doctor')
 
 module.exports.getAllDoctors = (req,res,next) => {
+  console.log("get all docs from ctrl")
   Doctor.getAllDoctors()
   .then( (doctors) => {
     res.status(200).json({doctors});
