@@ -2,8 +2,13 @@
 
 const { bookshelf } = require('../db/database')
 
+require('./patient_allergy')
+require('./allergy')
+require('./history')
 const Patient = bookshelf.Model.extend({
-  tableName: 'patients'
+  tableName: 'patients',
+  allergy: function() { return this.belongsToMany('Allergy').through('Patient_allergy')},
+  history: function() {return this.belongsToMany('History').through('Patient_history')}
 },{
   getPatient: function (id){
     return this.where({id:id})

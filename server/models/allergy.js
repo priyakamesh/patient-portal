@@ -2,11 +2,14 @@
 
 const { bookshelf } = require('../db/database')
 require('./allergy_type')
+require('./patient_allergy')
+require('./patient')
 const Allergy = bookshelf.Model.extend({
   tableName: 'allergy',
   allergy_type: function (){
     return this.belongsTo(Allergy_Type)
-  }
+  },
+  patient: function(){ return this.belongsToMany('Patient').through('Patient_allergy')}
 },{
   getAllAllergy: function(){
     return this.forge()

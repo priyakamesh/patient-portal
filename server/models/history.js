@@ -2,11 +2,13 @@
 
 const { bookshelf } = require('../db/database')
 require('./history_type')
+require('./patient')
 const History = bookshelf.Model.extend({
   tableName: 'history',
   history_type: function (){
     return this.belongsTo(History_Type)
-  }
+  },
+  patient: function() {return this.belongsToMany('Patient').through('Patient_history')}
 },{
   getAllHistory: function(){
     return this.forge()
