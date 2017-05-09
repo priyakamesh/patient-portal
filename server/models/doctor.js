@@ -2,8 +2,11 @@
 
 const { bookshelf } = require('../db/database')
 
+require('./patient')
+require('./patient_doctor')
 const Doctor = bookshelf.Model.extend({
-  tableName: 'doctors'
+  tableName: 'doctors',
+   patient: function(){ return this.belongsToMany('Patient').through('Patient_doctor')}
 },{
   getAllDoctors: function(){
     return this.forge()

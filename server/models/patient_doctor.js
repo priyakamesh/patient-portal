@@ -2,18 +2,18 @@
 
 const { bookshelf } = require('../db/database')
 require('./patient')
-require('./allergy')
+require('./doctor')
 
-const Patient_allergy = bookshelf.Model.extend({
-  tableName: 'patient_allergy',
+const Patient_doctor = bookshelf.Model.extend({
+  tableName: 'patient_doctor',
   patient: function(){ return this.belongsTo('Patient')},
-  allergy: function(){ return this.belongsTo('Allergy')}
+  doctor: function(){ return this.belongsTo('Doctor')}
 },{
-  getAllAllergy: function(id){
+  getAllDoctor: function(id){
     return this.where({patient_id: id})
     .fetchAll()
-    .then((all_allergy) =>{
-      return all_allergy
+    .then((all_doctor) =>{
+      return all_doctor
     })
     .catch((err) =>{
       return err
@@ -25,4 +25,4 @@ const Patient_allergy = bookshelf.Model.extend({
   }
 })
 
-module.exports = bookshelf.model('Patient_allergy', Patient_allergy)
+module.exports = bookshelf.model('Patient_doctor', Patient_doctor)

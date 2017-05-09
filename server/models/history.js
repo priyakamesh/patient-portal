@@ -3,6 +3,7 @@
 const { bookshelf } = require('../db/database')
 require('./history_type')
 require('./patient')
+require('./patient_history')
 const History = bookshelf.Model.extend({
   tableName: 'history',
   history_type: function (){
