@@ -1,0 +1,62 @@
+<!-- http://mgonto.github.io/angular-wizard/ -->
+<!-- <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner main-inner" ng-app="wizard-sample" ng-controller="PublicCtrl">
+        <wizard on-finish="finished()">
+
+          <wz-step wz-title="Import Contacts">
+            <h1>More steps</h1>
+            <p>Click on the bottom navigation on Liking it to go back to that step for example. Otherwise, let's continue with the wizard. Please <a href="" wz-next="">click here to continue</a></p>
+
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Create Survey">
+            <h1>Even More steps</h1>
+            <p>I can't deal with so many steps. ARGH</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Preview Survey">
+            <h1>Sup?</h1>
+            <p>I don't even know what to write!</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Finish">
+            <h1>Finish him</h1>
+            <p>Finally this ends!</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="END" />
+            <input type="button" ng-click="goBack()" value="Click here to start again" />
+            <input type="button" wz-reset value="Click here to reset" />
+          </wz-step>
+        </wizard>
+      </section>
+    </div>
+ -->
+<div class="login">
+  <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" ng-model="email">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate" ng-model="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn blue darken-4" ng-click="login()">Login</a>
+            <a class="waves-effect waves-light btn blue darken-4
+              " ng-click = "forgotPassword()">Forgot Password ?</a>
+            <p>New User ?<a href="#/register">Register Here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

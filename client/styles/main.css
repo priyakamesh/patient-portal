@@ -1,0 +1,17 @@
+body {
+  background-color: lightgrey;
+  text-align: center;
+}
+
+.steps-indicator li.done a:before {
+  background-color: #08f !important;
+}
+.steps-indicator li.current a:before {
+  background-color: #08f !important;
+}
+
+.login {
+  background-color: #fff;
+  display: inline-block;
+  width: 700px;
+}
