@@ -27,6 +27,7 @@ router.get('/',function (req,res) {
     "add details to patient": "http://localhost:3000/api/v1/patient/:id",
     "addPatient": "http://localhost:3000/api/v1/patient/new",
     "insurance":"http://localhost:3000/api/v1/patients/:id/insurance",
+    "get patient insurance": "http://localhost:3000/api/v1/insurance/:id",
     "primary_insurance": "http://localhost:3000/api/v1/patients/:id/primaryinsurance",
     "secondary_insurance": "http://localhost:3000/api/v1/patients/:id/secondaryinsurance",
     "release_med_info": "http://localhost:3000/api/v1/patient/:id/release_med_info",

@@ -42,6 +42,7 @@ exports.up = function(knex, Promise) {
       t.string('subscriberid')
       t.integer('insurance_type_id').unsigned().references('insurance_type.id')
       t.integer('patient_id').unsigned().references('patients.id')
+      t.unique(['insuranceprovider','groupid','subscriberid','insurance_type_id','patient_id'])
     })
 
     .createTable('release_med_info', (t) =>{
