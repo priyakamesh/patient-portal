@@ -5,41 +5,42 @@
 
           <wz-step wz-title="Personal Information">
              <div class="row">
-              <form class="col s12">
+              <form class="col s12" ng-submit="personal()">
               <h5>Personal Information</h5>
                 <div class="row">
                   <div class="input-field col s6">
-                    <input placeholder="Placeholder" id="first_name" type="text" class="validate" ng-model="first_name">
+                    <input id="first_name" type="text" class="validate" ng-model="currentUser.firstname">
                     <label for="first_name">First Name</label>
                   </div>
                   <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate" ng-model="last_name">
+                    <input id="last_name" type="text" class="validate" ng-model="currentUser.lastname">
                     <label for="last_name">Last Name</label>
                   </div>
                 </div>
                 <div class="row">
                    <div class="input-field col s6">
-                    <input  type="date" class="datepicker text1" ng-model="dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
+                    <input  type="date" class="datepicker" ng-model="currentUser.dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
                     </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="ethnicity" type="text" class="validate" ng-model="ethnicity">
+                    <input id="ethnicity" type="text" class="validate" ng-model="currentUser.ethnicity">
                     <label for="ethnicity">Ethnicity</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="address" type="text" class="validate" ng-model="address">
+                    <input id="address" type="text" class="validate" ng-model="currentUser.address">
                     <label for="address">Address</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="phone" type="text" class="validate" ng-model="phone">
+                    <input id="phone" type="text" class="validate" ng-model="currentUser.phonenumber">
                     <label for="phone">Phone Number</label>
                   </div>
                 </div>
+                <button type = "submit" class="waves-effect waves-light">Submit</button>
 
               </form>
             </div>
@@ -47,7 +48,7 @@
 
 
             <input type="button" wz-previous="logStep()" value="BACK" />
-            <input type="button" wz-next="logStep()" ng-click = "personal()" value="NEXT" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
           </wz-step>
           <wz-step wz-title="Create Survey">
             <h1>Even More steps</h1>
