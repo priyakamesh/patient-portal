@@ -6,9 +6,24 @@ if($scope.currentUser.id) {
   .then((data) =>{
     $scope.doctorname = data.data.doctors
   })
-  $scope.keydown = ()=>{
-    console.log("$scope.first_name",$scope.currentUser.firstname);
-  }
+
+  $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/doctor`)
+  .then((data) =>{
+    $scope.patientDoctor = data.data.doctor[0]
+    console.log("$scope.patientDoctor",$scope.patientDoctor);
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
+
+  // $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
+  // .then((data) =>{
+  //   console.log("data",data);
+  //   $scope.patientInsurance = data.data.insurance
+  // })
+  // .catch((err) =>{
+  //   console.log("err",err);
+  // })
   $scope.personal = () =>{
       console.log("$scope.fdob",$scope.dob);
     $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
@@ -47,15 +62,21 @@ if($scope.currentUser.id) {
     console.log("$scope.doctorfullname",$scope.doctorfullname);
     $http.get(`http://localhost:3000/api/v1/doctors/check/${$scope.doctorfullname}`)
     .then((data) =>{
-      console.log("data",data);
+      $scope.doctorid = data.data.doctor[0].id
+      console.log("$scope.doctorid",$scope.doctorid);
+    $http.post(`http://localhost:3000/api/v1/addPatientDoctor/${$scope.currentUser.id}/${$scope.doctorid}`,{
+      patient_id: $scope.currentUser.id,
+      doctor_id: $scope.doctorid
     })
-    // $http.post(`http://localhost:3000/api/v1/addPatientDoctor/${$scope.currentUser.id}/${$scope.doctorid}`)
-    // .then((data) =>{
-    //   console.log("data",data);
-    // })
-    // .catch((data) =>{
-    //   console.log("data from catch",data);
-    // })
+    .then((data) =>{
+      console.log("data",data);
+      Materialize.toast(`${$scope.doctorfullname} is added to your Facility Information`)
+    })
+    .catch((data) =>{
+      console.log("data from catch",data);
+      Materialize.toast(`${$scope.doctorfullname} is already in your profile`,2000)
+    })
+    })
     // .catch((data) =>{
     //   console.log("im in catch");
     //   $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/doctor`)
@@ -64,6 +85,15 @@ if($scope.currentUser.id) {
     //       console.log("$scope.doctorname",$scope.id);
     //     }
     //   })
+    // })
+  }
+ $scope.insuranceprovider = {};
+  $scope.insurance = () =>{
+
+    console.log("$scope.insuranceprovider",$scope.insuranceprovider);
+    // $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
+    //   insuranceprovider: $scope.insuranceprovider,
+    //   groupid: $scope.groupid
     // })
   }
  }

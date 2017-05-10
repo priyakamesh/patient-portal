@@ -54,7 +54,7 @@
           </wz-step>
           <wz-step wz-title="Facility Information">
             <div class="row">
-               <form class="col s12" ng-submit="facility(doctorname.id)">
+               <form class="col s12" ng-submit="facility()">
                 <h5>Facility Information</h5>
                   <div class="row">
                     <div class="input-field col s6">
@@ -108,9 +108,41 @@
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="NEXT" />
           </wz-step>
-          <wz-step wz-title="Preview Survey">
-            <h1>Sup?</h1>
-            <p>I don't even know what to write!</p>
+          <wz-step wz-title="Insurance Details">
+            <div class="row">
+               <form class="col s12" ng-submit="insurance()">
+                <h5>Insurance Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="primaryInsurance" type="text" class="validate" ng-model="insuranceprovider">
+                      <label for="primaryInsurance">Insurance Provider</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="groupid" type="text" class="validate" ng-model="groupid" >
+                      <label for="groupid">GroupID</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="subscriberid" type="text" class="validate" ng-model="subscriberid">
+                      <label for="subscriberid">SubscriberID</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="insuranceType" type="text" class="validate" list="insurance_type" ng-model="insurance_type">
+                      <label for="insuranceType">insuranceType</label>
+                    </div>
+                    <datalist id="insurance_type">
+                      <option>Primary</option>
+                      <option>Secondary</option>
+                    </datalist>
+                  </div>
+                  <button type = "submit" class="waves-effect waves-light">Submit</button>
+
+              </form>
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="NEXT" />
           </wz-step>
