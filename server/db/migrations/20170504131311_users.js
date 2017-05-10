@@ -19,6 +19,7 @@ exports.up = function(knex, Promise) {
       t.string('speciality')
       t.string('address')
       t.string('phonenumber')
+      t.unique(['fullname','speciality','address','phonenumber'])
     })
 
     .createTable('patient_doctor', (t) =>{

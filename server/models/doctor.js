@@ -18,6 +18,17 @@ const Doctor = bookshelf.Model.extend({
     .catch( (err) =>{
       return err
     })
+  },
+  getDoctor: function (fullname) {
+    return this.where({fullname:fullname})
+    .fetchAll()
+    .then((doctor) =>{
+      console.log("doctor",doctor);
+      return doctor
+    })
+    .catch((err) =>{
+      return err
+    })
   }
 })
 
