@@ -23,6 +23,8 @@ router.get('/',function (req,res) {
     "list of family_history" : "http://localhost:3000/api/v1/familyhistory",
     "all history for a patient" : "http://localhost:3000/api/v1/patient/:patient_id/history",
     "patient": "http://localhost:3000/api/v1/patient/<id>",
+    "get patient id": "http://localhost:3000/api/v1/patient/:email",
+    "add details to patient": "http://localhost:3000/api/v1/patient/:id",
     "addPatient": "http://localhost:3000/api/v1/patient/new",
     "insurance":"http://localhost:3000/api/v1/patients/:id/insurance",
     "primary_insurance": "http://localhost:3000/api/v1/patients/:id/primaryinsurance",

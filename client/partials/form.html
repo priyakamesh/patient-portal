@@ -1,0 +1,74 @@
+<!-- http://mgonto.github.io/angular-wizard/ -->
+<div id="main_content_wrap" class="outer login">
+      <section id="main_content" class="inner main-inner" ng-app="wizard-sample" ng-controller="PublicCtrl">
+        <wizard on-finish="finished()">
+
+          <wz-step wz-title="Personal Information">
+             <div class="row">
+              <form class="col s12">
+              <h5>Personal Information</h5>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="first_name" type="text" class="validate" ng-model="first_name">
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" ng-model="last_name">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                   <div class="input-field col s6">
+                    <input  type="date" class="datepicker text1" ng-model="dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="ethnicity" type="text" class="validate" ng-model="ethnicity">
+                    <label for="ethnicity">Ethnicity</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="address" type="text" class="validate" ng-model="address">
+                    <label for="address">Address</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="phone" type="text" class="validate" ng-model="phone">
+                    <label for="phone">Phone Number</label>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+
+
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" ng-click = "personal()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Create Survey">
+            <h1>Even More steps</h1>
+            <p>I can't deal with so many steps. ARGH</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Preview Survey">
+            <h1>Sup?</h1>
+            <p>I don't even know what to write!</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Finish">
+            <h1>Finish him</h1>
+            <p>Finally this ends!</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="END" />
+            <input type="button" ng-click="goBack()" value="Click here to start again" />
+            <input type="button" wz-reset value="Click here to reset" />
+          </wz-step>
+        </wizard>
+      </section>
+    </div>

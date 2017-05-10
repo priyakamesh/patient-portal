@@ -51,6 +51,26 @@ const Patient = bookshelf.Model.extend({
     .catch((err) =>{
       return err
     })
+  },
+  getPatientId: function(email){
+    return this.where({email:email})
+    .fetch()
+    .then((patient) =>{
+      return patient
+    })
+    .catch((err) =>{
+      return err
+    })
+  },
+  updatePatient: function(body,id){
+    return this.where({id:id})
+    .save(body,{patch:true})
+    .then(() =>{
+      return {"msg":"successfull"}
+    })
+    .catch((err) =>{
+      return err
+    })
   }
 })
 
