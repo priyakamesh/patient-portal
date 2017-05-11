@@ -71,9 +71,9 @@ exports.up = function(knex, Promise) {
       t.increments()
       t.integer('patient_id').unsigned().references('patients.id')
       t.integer('history_id').unsigned().references('history.id')
-      t.unique(['patient_id', 'history_id'])
       t.string("unit")
       t.string("frequency")
+      t.unique(['patient_id', 'history_id','unit', 'frequency'])
     })
 
     .createTable('allergy_type', (t) =>{

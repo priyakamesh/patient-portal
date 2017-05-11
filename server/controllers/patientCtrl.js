@@ -132,7 +132,7 @@ module.exports.addManyHistory = ({params:{id},body},res,next) =>{
   })
   Patient_history.addMany(pairs)
   .then(() =>{
-    res.status(200).json({"msg":"history added successfully"})
+    res.status(200).json({"msg":"history id added successfully"})
   })
   .catch((err) =>{ next(err)})
 }
