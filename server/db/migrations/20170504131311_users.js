@@ -51,6 +51,7 @@ exports.up = function(knex, Promise) {
       t.string('relation')
       t.string('phonenumber')
       t.integer('patient_id').unsigned().references('patients.id')
+      t.unique(['fullname','relation','phonenumber','patient_id'])
     })
 
     .createTable('history_type', (t) =>{
