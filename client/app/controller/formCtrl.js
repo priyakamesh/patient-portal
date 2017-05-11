@@ -212,12 +212,16 @@ if($scope.currentUser.id) {
   }
   $scope.history = () =>{
     $scope.patientHistory = [];
+    $scope.socialHistoryFreqUnit = [];
     $('input[name="familyHistories"]:checked').map(function() {
                 $scope.patientHistory.push($(this).val());
     });
     $('input[name="socialHistories"]:checked').map(function() {
-                $scope.patientHistory.push($(this).val());
+                $scope.socialHistoryFreqUnit.push($(this).val());
     });
+    $scope.socialHistoryFreqUnit.push($scope.histories.frequency)
+    $scope.socialHistoryFreqUnit.push($scope.histories.unit)
+    $scope.patientHistory.push($scope.socialHistoryFreqUnit)
     console.log("$scope.patientHistory",$scope.patientHistory);
     console.log("$scope.patientHistory.frequency",$scope.histories.frequency);
     console.log("$scope.patientHistory.unit",$scope.histories.unit);

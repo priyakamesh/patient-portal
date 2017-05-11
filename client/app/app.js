@@ -18,4 +18,5 @@ patient_portal.config(($routeProvider,$locationProvider) =>{
     controller: "ProfileCtrl",
     templateUrl: '/partials/profile.html'
   })
+  .otherwise('/')
 })

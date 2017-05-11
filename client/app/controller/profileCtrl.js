@@ -1,4 +1,5 @@
-patient_portal.controller('ProfileCtrl', function($location,$scope,$http){
+patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFactory){
+
    $scope.currentUser = AuthFactory.getCurrentPatient()
   console.log("$scope.currentUser.id",$scope.currentUser.id);
 if($scope.currentUser.id) {
@@ -83,7 +84,7 @@ if($scope.currentUser.id) {
     console.log("err",err);
   })
 } else {
-  $location("/")
+  $location.url("/")
 }
 
 })
