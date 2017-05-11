@@ -16,14 +16,14 @@ if($scope.currentUser.id) {
     console.log("err",err);
   })
 
-  // $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
-  // .then((data) =>{
-  //   console.log("data",data);
-  //   $scope.patientInsurance = data.data.insurance
-  // })
-  // .catch((err) =>{
-  //   console.log("err",err);
-  // })
+  $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
+  .then((data) =>{
+    console.log("data",data);
+    $scope.patientInsurance = data.data.insurance
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
   $scope.personal = () =>{
       console.log("$scope.fdob",$scope.dob);
     $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
@@ -87,14 +87,31 @@ if($scope.currentUser.id) {
     //   })
     // })
   }
- $scope.insuranceprovider = {};
-  $scope.insurance = () =>{
 
-    console.log("$scope.insuranceprovider",$scope.insuranceprovider);
-    // $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
-    //   insuranceprovider: $scope.insuranceprovider,
-    //   groupid: $scope.groupid
-    // })
+  $scope.insurance = () =>{
+    $scope.insuranceType = $('#insuranceType').val();
+    console.log("$scope.insurance",$scope.insurance);
+    console.log("$scope.insuranceprovider",$scope.patientInsurance.insurance_type);
+    if ($scope.insuranceType === 'Primary'){
+      $scope.patientInsurance.insurance_type_id = 1
+
+    }
+    else {
+      $scope.patientInsurance.insurance_type_id = 2
+    }
+    $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
+      insuranceprovider: $scope.patientInsurance.insuranceprovider,
+      groupid: $scope.patientInsurance.groupid,
+      subscriberid: $scope.patientInsurance.subscriberid,
+      insurance_type_id: $scope.patientInsurance.insurance_type_id,
+      patient_id: $scope.currentUser.id
+    })
+    .then(() => {
+      Materialize.toast("insurance details added successfully")
+    })
+    .catch((err) =>{
+      console.log("err",err);
+    })
   }
  }
  else {
