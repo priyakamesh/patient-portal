@@ -141,22 +141,46 @@
               <form class="col s12" ng-submit="allergy()">
                 <h5>Allergy</h5>
                   <div class="row container">
-                    <form class="col s12" ng-submit="allergy()">
                     <div class="fixed">
                       <h6>Food Allergy</h6>
                       <div  ng-repeat = "foodallergy in foodallergys">
-                        <input type= "checkbox" value= "{{foodallergy.name}}" id="{{foodallergy.name}}">
+                        <input type= "checkbox" value= "{{foodallergy.id}}" id="{{foodallergy.name}}" name="foodallergys">
                         <label for="{{foodallergy.name}}">{{foodallergy.name}}</label>
                       </div>
                       </div>
                       <div class="flex-item">
                       <h6>Drug Allergy</h6>
                       <div  ng-repeat = "drugallergy in drugallergys">
-                        <input type= "checkbox" value= "{{drugallergy.name}}" id="{{drugallergy.name}}">
+                        <input type= "checkbox" value= "{{drugallergy.id}}" id="{{drugallergy.name}}" name="drugallergys">
                         <label for="{{drugallergy.name}}">{{drugallergy.name}}</label>
                       </div>
                       </div>
-                    </form>
+                  </div>
+                  <button type = "submit" class="waves-effect waves-light">Submit</button>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="History">
+            <div class="row">
+              <form class="col s12" ng-submit="history()">
+                <h5>Histoy</h5>
+                  <div class="row container">
+                    <div class="fixed">
+                      <h6>Family History</h6>
+                      <div  ng-repeat = "familyHistory in familyHistories">
+                        <input type= "checkbox" value= "{{familyHistory.id}}" id="{{familyHistory.name}}" name="familyHistories">
+                        <label for="{{familyHistory.name}}">{{familyHistory.name}}</label>
+                      </div>
+                      </div>
+                      <div class="flex-item">
+                      <h6>Social History</h6>
+                      <div  ng-repeat = "socialHistory in socialHistories">
+                        <input type= "checkbox" value= "{{socialHistory.id}}" id="{{socialHistory.name}}" name="socialHistories">
+                        <label for="{{socialHistory.name}}">{{socialHistory.name}}</label>
+                      </div>
+                      </div>
                   </div>
                   <button type = "submit" class="waves-effect waves-light">Submit</button>
               </form>

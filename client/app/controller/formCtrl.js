@@ -44,6 +44,40 @@ if($scope.currentUser.id) {
     console.log("allergy",data.data.drug_allergy);
     $scope.drugallergys = data.data.drug_allergy
   })
+  $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`)
+  .then((allergy) =>{
+    console.log("allergy",allergy);
+    $scope.allergys = allergy.data.allergy
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
+
+  $http.get(`http://localhost:3000/api/v1/socialhistory`)
+  .then((data) =>{
+    $scope.socialHistories = data.data.social_history
+    console.log("$socialHistories",$scope.socialHistories);
+  })
+  $http.get(`http://localhost:3000/api/v1/familyhistory`)
+  .then((data) =>{
+    $scope.familyHistories = data.data.family_history
+    console.log("$familyHistories",$scope.familyHistories);
+  })
+
+  $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`)
+  .then((history) =>{
+    console.log("history",history);
+    $scope.allergys = history.data.history
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
+
+
+
+
+
+
   $scope.personal = () =>{
       console.log("$scope.fdob",$scope.dob);
     $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
@@ -90,7 +124,7 @@ if($scope.currentUser.id) {
     })
     .then((data) =>{
       console.log("data",data);
-      Materialize.toast(`${$scope.doctorfullname} is added to your Facility Information`)
+      Materialize.toast(`${$scope.doctorfullname} is added to your Facility Information`,2000)
     })
     .catch((data) =>{
       console.log("data from catch",data);
@@ -147,6 +181,45 @@ if($scope.currentUser.id) {
     .catch((err) =>{
       Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
     })
+  }
+
+  $scope.allergy = () =>{
+    $scope.patientAllergys = [];
+    $('input[type=checkbox]:checked').map(function() {
+                $scope.patientAllergys.push($(this).val());
+    });
+    // $scope.patientAllergys = $scope.patientAllergys.push(foodallergys,drugallergys)
+    console.log("$scope.patientAllergys",$scope.patientAllergys);
+    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`,{
+      allergy_id : $scope.patientAllergys
+    })
+    .then(() => {
+      console.log("allergy's added successfully");
+    })
+    .catch((err) =>{
+      console.log("err",err);
+    })
+
+  }
+  $scope.history = () =>{
+    $scope.patientHistory = [];
+    $('input[name="familyHistories"]:checked').map(function() {
+                $scope.patientHistory.push($(this).val());
+    });
+    $('input[name="socialHistories"]:checked').map(function() {
+                $scope.patientHistory.push($(this).val());
+    });
+    console.log("$scope.patientHistory",$scope.patientHistory);
+    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
+      history_id : $scope.patientHistory
+    })
+    .then(() => {
+      console.log("histories added successfully");
+    })
+    .catch((err) =>{
+      console.log("err",err);
+    })
+
   }
  }
  else {
