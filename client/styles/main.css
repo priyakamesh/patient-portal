@@ -25,3 +25,8 @@ body {
 .flex-item{
     flex-grow: 1;
 }
+.check {
+  display: inline-block;
+  margin-right: 40px;
+  border: 1px solid grey;
+}

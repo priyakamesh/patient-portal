@@ -9,7 +9,7 @@ if($scope.currentUser.id) {
 
   $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/doctor`)
   .then((data) =>{
-    $scope.patientDoctor = data.data.doctor[0]
+    $scope.patientDoctor = data.data.doctor
     console.log("$scope.patientDoctor",$scope.patientDoctor);
   })
   .catch((err) =>{
@@ -67,12 +67,21 @@ if($scope.currentUser.id) {
   $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`)
   .then((history) =>{
     console.log("history",history);
-    $scope.allergys = history.data.history
+    $scope.histories = history.data.history
+    console.log("$scope.histories",$scope.histories);
   })
   .catch((err) =>{
     console.log("err",err);
   })
 
+  $http.get(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/medication`)
+  .then((data) =>{
+    console.log("data.data",data.data.medications);
+    $scope.medications = data.data.medications
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
 
 
 
@@ -210,6 +219,8 @@ if($scope.currentUser.id) {
                 $scope.patientHistory.push($(this).val());
     });
     console.log("$scope.patientHistory",$scope.patientHistory);
+    console.log("$scope.patientHistory.frequency",$scope.histories.frequency);
+    console.log("$scope.patientHistory.unit",$scope.histories.unit);
     $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
       history_id : $scope.patientHistory
     })
@@ -221,6 +232,53 @@ if($scope.currentUser.id) {
     })
 
   }
+
+  $scope.medication = () =>{
+    console.log("$scope.medications.brandname",$scope.medications.brandname);
+    console.log("$scope.medications.drugname",$scope.medications.drugname);
+    console.log("$scope.medications.dosage",$scope.medications.dosage);
+    console.log("$scope.medications.medication_type",$scope.medications.medication_type);
+    $scope.medications.route = $("#route").val()
+    console.log("$scope.medications.route",$scope.medications.route);
+    if ($scope.medications.medication_type === 'Current') {
+      $scope.medications.medication_type_id = 1
+    } else {
+      $scope.medications.medication_type_id = 2
+    }
+
+    if($scope.medications.medication_type_id === 1) {
+      $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/currentmedication/new`,{
+        brandname: $scope.medications.brandname,
+        drugname: $scope.medications.drugname,
+        dosage: $scope.medications.dosage,
+        route: $scope.medications.route,
+        medication_type_id: $scope.medications.medication_type_id,
+        patient_id: $scope.currentUser.id
+      })
+      .then(() =>{
+        Materialize.toast("medications added successfully", 2000)
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+  }
+  else {
+    $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/dismedication/new`,{
+        brandname: $scope.medications.brandname,
+        drugname: $scope.medications.drugname,
+        dosage: $scope.medications.dosage,
+        route: $scope.medications.route,
+        medication_type_id: $scope.medications.medication_type_id,
+        patient_id: $scope.currentUser.id
+      })
+      .then(() =>{
+        Materialize.toast("medications added successfully", 2000)
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+  }
+ }
  }
  else {
   $location.path("/")

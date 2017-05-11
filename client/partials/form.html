@@ -165,21 +165,38 @@
           <wz-step wz-title="History">
             <div class="row">
               <form class="col s12" ng-submit="history()">
-                <h5>Histoy</h5>
-                  <div class="row container">
-                    <div class="fixed">
-                      <h6>Family History</h6>
-                      <div  ng-repeat = "familyHistory in familyHistories">
+                <h5>History</h5>
+                  <div class="row">
+                    <div>
+                      <h5>Family History</h5>
+                      <div  ng-repeat = "familyHistory in familyHistories" class="check">
                         <input type= "checkbox" value= "{{familyHistory.id}}" id="{{familyHistory.name}}" name="familyHistories">
                         <label for="{{familyHistory.name}}">{{familyHistory.name}}</label>
                       </div>
                       </div>
-                      <div class="flex-item">
-                      <h6>Social History</h6>
-                      <div  ng-repeat = "socialHistory in socialHistories">
+                      <div>
+                      <h5>Social History</h5>
+                      <div  ng-repeat = "socialHistory in socialHistories" class="check">
                         <input type= "checkbox" value= "{{socialHistory.id}}" id="{{socialHistory.name}}" name="socialHistories">
                         <label for="{{socialHistory.name}}">{{socialHistory.name}}</label>
+                        <input type="text" id="socialhistory" class="validate" list="frequency" placeholder="Frequency" ng-model = "histories.frequency">
+                        <!-- <label for="socialhistory">Frequency</label> -->
+                        <datalist id="frequency">
+                          <option value = "per year"></option>
+                          <option value = "per month"></option>
+                          <option value = "per week"></option>
+                          <option value = "per day"></option>
+                          <option value = "per hour"></option>
+                        </datalist>
+                        <input type="text" id="socialhistory" class="validate" list="unit" ng-model = "histories.unit">
+                        <!-- <label for="socialhistory">Frequency</label> -->
+                        <datalist id="unit">
+                          <option value = "one packet"></option>
+                          <option value = "one piece"></option>
+                          <option value = "one ounce"></option>
+                        </datalist>
                       </div>
+
                       </div>
                   </div>
                   <button type = "submit" class="waves-effect waves-light">Submit</button>
@@ -187,6 +204,47 @@
             </div>
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title = "Medication">
+            <div class="row">
+              <form class="col s12" ng-submit="medication()">
+                <h5>Medication</h5>
+                <div class="row">
+                  <input type="text" id="brandname" ng-model = "medications.brandname">
+                  <label for="brandname">Brand Name</label>
+                </div>
+                <div class="row">
+                  <input type="text" id="drugname" ng-model = "medications.drugname">
+                  <label for="drugname">Drug Name</label>
+                </div>
+                <div class="row">
+                  <input type="text" id="dosage" ng-model = "medications.dosage">
+                  <label for="dosage">Dosage</label>
+                </div>
+                <div class="row">
+                  <input type="text" id="route" ng-model = "drugname" list="medication_route" ng-model="medications.route">
+                  <label for="route">Route</label>
+                  <datalist id="medication_route">
+                    <option value="Oral"></option>
+                    <option value="AURICULAR (OTIC)"></option>
+                    <option value="OPHTHALMIC"></option>
+                    <option value="INTRAVENOUS"></option>
+                    <option value="INHALATION"></option>
+                  </datalist>
+                </div>
+                <div class="row">
+                  <input type="text" id="medication_type", list="medicationType" ng-model = "medications.medication_type">
+                  <label for="medication_type">Medication Type</label>
+                  <datalist id="medicationType">
+                    <option>Current</option>
+                    <option>Discontinued</option>
+                  </datalist>
+                </div>
+                 <button type = "submit" class="waves-effect waves-light">Submit</button>
+              </form>
+              <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+            </div>
           </wz-step>
           <wz-step wz-title="Insurance Details">
             <div class="row">

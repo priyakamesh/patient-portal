@@ -8,7 +8,7 @@ patient_portal.controller('PublicCtrl', function($scope, AuthFactory,$location, 
     .then((data)=>{
       if(!data.message){
           Materialize.toast("logged in", 1000)
-          $location.url("/form")
+          $location.url("/profile")
       }
       else {
         Materialize.toast("Login email/password not found",2000)

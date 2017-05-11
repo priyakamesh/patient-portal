@@ -14,4 +14,8 @@ patient_portal.config(($routeProvider,$locationProvider) =>{
     controller: "FormCtrl",
     templateUrl: "/partials/form.html"
   })
+  .when("/profile", {
+    controller: "ProfileCtrl",
+    templateUrl: '/partials/profile.html'
+  })
 })
