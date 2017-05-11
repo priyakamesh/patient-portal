@@ -108,6 +108,62 @@
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="NEXT" />
           </wz-step>
+          <wz-step wz-title="Release of Medical Information">
+            <div class="row">
+              <form class="col s12" ng-submit="release()">
+                <h5>Release of Medical Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="fullname" type="text" class="validate" ng-model="releasePerson.fullname">
+                      <label for="fullname">Full Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="relation" type="text" class="validate" ng-model="releasePerson.relation">
+                      <label for="relation">Relation</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phonenumber" type="text" class="validate" ng-model="releasePerson.phone">
+                      <label for="phonenumber">Phone Number</label>
+                    </div>
+                  </div>
+                  <button type = "submit" class="waves-effect waves-light">Submit</button>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Allergy">
+            <div class="row">
+              <form class="col s12" ng-submit="allergy()">
+                <h5>Allergy</h5>
+                  <div class="row container">
+                    <form class="col s12" ng-submit="allergy()">
+                    <div class="fixed">
+                      <h6>Food Allergy</h6>
+                      <div  ng-repeat = "foodallergy in foodallergys">
+                        <input type= "checkbox" value= "{{foodallergy.name}}" id="{{foodallergy.name}}">
+                        <label for="{{foodallergy.name}}">{{foodallergy.name}}</label>
+                      </div>
+                      </div>
+                      <div class="flex-item">
+                      <h6>Drug Allergy</h6>
+                      <div  ng-repeat = "drugallergy in drugallergys">
+                        <input type= "checkbox" value= "{{drugallergy.name}}" id="{{drugallergy.name}}">
+                        <label for="{{drugallergy.name}}">{{drugallergy.name}}</label>
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                  <button type = "submit" class="waves-effect waves-light">Submit</button>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
           <wz-step wz-title="Insurance Details">
             <div class="row">
                <form class="col s12" ng-submit="insurance()">

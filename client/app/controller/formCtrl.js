@@ -24,6 +24,26 @@ if($scope.currentUser.id) {
   .catch((err) =>{
     console.log("err",err);
   })
+
+  $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info`)
+  .then((data) =>{
+    $scope.releasePerson = data.data
+    console.log("$scope.releasePerson",$scope.releasePerson);
+  })
+  .catch((err) =>{
+    console.log("err",err);
+  })
+
+  $http.get(`http://localhost:3000/api/v1/foodallergy`)
+  .then((data)=>{
+    console.log("allergy",data.data.food_allergy);
+    $scope.foodallergys = data.data.food_allergy
+  })
+  $http.get(`http://localhost:3000/api/v1/drugallergy`)
+  .then((data)=>{
+    console.log("allergy",data.data.drug_allergy);
+    $scope.drugallergys = data.data.drug_allergy
+  })
   $scope.personal = () =>{
       console.log("$scope.fdob",$scope.dob);
     $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
@@ -111,6 +131,21 @@ if($scope.currentUser.id) {
     })
     .catch((err) =>{
       console.log("err",err);
+    })
+  }
+
+  $scope.release = () =>{
+    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info/new`,{
+      fullname: $scope.releasePerson.fullname,
+      relation: $scope.releasePerson.relation,
+      phonenumber: $scope.releasePerson.phone,
+      patient_id: $scope.currentUser.id
+    })
+    .then(() =>{
+      Materialize.toast( `${$scope.releasePerson.fullname} added as your release person`, 2000)
+    })
+    .catch((err) =>{
+      Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
     })
   }
  }

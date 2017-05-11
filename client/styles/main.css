@@ -15,3 +15,13 @@ body {
   display: inline-block;
   width: 700px;
 }
+
+.container{
+    display: flex;
+}
+.fixed{
+    width: 200px;
+}
+.flex-item{
+    flex-grow: 1;
+}
