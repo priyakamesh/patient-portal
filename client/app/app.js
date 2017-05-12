@@ -18,5 +18,9 @@ patient_portal.config(($routeProvider,$locationProvider) =>{
     controller: "ProfileCtrl",
     templateUrl: '/partials/profile.html'
   })
+  .when("/logout", {
+    controller: "LogoutCtrl",
+    templateUrl: '/partials/logout.html'
+  })
   .otherwise('/')
 })

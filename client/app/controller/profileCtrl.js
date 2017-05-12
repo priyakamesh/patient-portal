@@ -5,6 +5,7 @@ patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFa
     console.log("$scope.active_portal",typeof $scope.active_portal);
   }
    $scope.currentUser = AuthFactory.getCurrentPatient()
+
    // $scope.currentUser.dob = $scope.currentUser.dob[0].DOB.split("T",2)
    console.log("$scope.currentUser", $scope.currentUser);
 
