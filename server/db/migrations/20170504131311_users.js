@@ -19,6 +19,7 @@ exports.up = function(knex, Promise) {
       t.string('speciality')
       t.string('address')
       t.string('phonenumber')
+      t.unique(['fullname','speciality','address','phonenumber'])
     })
 
     .createTable('patient_doctor', (t) =>{
@@ -41,6 +42,7 @@ exports.up = function(knex, Promise) {
       t.string('subscriberid')
       t.integer('insurance_type_id').unsigned().references('insurance_type.id')
       t.integer('patient_id').unsigned().references('patients.id')
+      t.unique(['insuranceprovider','groupid','subscriberid','insurance_type_id','patient_id'])
     })
 
     .createTable('release_med_info', (t) =>{
@@ -49,6 +51,7 @@ exports.up = function(knex, Promise) {
       t.string('relation')
       t.string('phonenumber')
       t.integer('patient_id').unsigned().references('patients.id')
+      t.unique(['fullname','relation','phonenumber','patient_id'])
     })
 
     .createTable('history_type', (t) =>{
@@ -68,9 +71,9 @@ exports.up = function(knex, Promise) {
       t.increments()
       t.integer('patient_id').unsigned().references('patients.id')
       t.integer('history_id').unsigned().references('history.id')
-      t.unique(['patient_id', 'history_id'])
       t.string("unit")
       t.string("frequency")
+      t.unique(['patient_id', 'history_id','unit', 'frequency'])
     })
 
     .createTable('allergy_type', (t) =>{

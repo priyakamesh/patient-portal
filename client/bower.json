@@ -1,0 +1,26 @@
+{
+  "name": "client",
+  "homepage": "https://github.com/priyakamesh/patient-portal",
+  "authors": [
+    "krishnapriya <krishnapriyakamesh@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "materialize": "^0.98.2",
+    "materialize-autocomplete": "^1.0.7",
+    "angular-wizard": "^0.10.0",
+    "angular-webstorage": "^0.14.0"
+  }
+}

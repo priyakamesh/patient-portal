@@ -14,6 +14,16 @@ module.exports.getAllDoctors = (req,res,next) => {
     next(error);
   });
 }
+
+module.exports.getDoctor = ({params: {fullname}}, res, next) =>{
+  Doctor.getDoctor(fullname)
+  .then((doctor) =>{
+    res.status(200).json({doctor});
+  })
+  .catch((err) =>{
+    next(err)
+  })
+}
 module.exports.addDoctor = ({body},res,next) =>{
   Doctor.forge(body)
   .save()

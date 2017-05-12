@@ -38,6 +38,16 @@ const Insurance = bookshelf.Model.extend({
     .catch((err) =>{
       return err
     })
+  },
+  getPatientInsurance: function(id){
+    return this.where({patient_id:id})
+    .fetchAll()
+    .then((getInsurance) =>{
+      return getInsurance
+    })
+    .catch((err) =>{
+      return err
+    })
   }
 })
 

@@ -30,3 +30,19 @@ module.exports.getAllSecondaryInsurance = (req,res,next)=>{
     next(err)
   })
 }
+
+module.exports.getPatientInsurance = ({params: {id}}, res, next) =>{
+  Insurance.getPatientInsurance(id)
+  .then((insurance) =>{
+    res.status(200).json({insurance})
+  })
+  .catch((err) => next(err))
+}
+module.exports.addInsurance = ({params:{id},body},res,next) =>{
+  Insurance.forge(body)
+  .save()
+  .then(() =>{
+    res.status(200).json({"msg":"success"})
+  })
+  .catch((err) =>{ next(err)})
+}
