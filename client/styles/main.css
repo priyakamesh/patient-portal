@@ -47,11 +47,6 @@ label.sm:last-child:after {
    margin: 0;
   padding: 0;
 }
- /* .check1 input {
-        margin: 0;
-        padding: 0;
-        display:block;
-        height:12px;
-        overflow:hidden
-    }
-*/
+.medication {
+  border: 1px solid black;
+}

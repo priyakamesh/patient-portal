@@ -15,6 +15,17 @@ if($scope.currentUser.id) {
   .catch((err) =>{
     console.log("err",err);
   })
+  $scope.keydown = () =>{
+      $scope.doctorfullname = $('#full_name').val();
+      console.log("$scope.doctorfullname",$scope.doctorfullname);
+      $http.get(`http:localhost:3000/api/v1/doctors/check/${$scope.patientDoctor.fullname}`)
+      .then((data) =>{
+        console.log("doctor fullname",data);
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+}
 
   $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
   .then((data) =>{
@@ -98,7 +109,7 @@ if($scope.currentUser.id) {
       phonenumber: $scope.currentUser.phonenumber
     })
     .then((data) =>{
-      console.log("updated in patients table")
+      Materialize.toast("Updated personal Information successfully",2000)
     })
   }
 
@@ -203,10 +214,10 @@ if($scope.currentUser.id) {
       allergy_id : $scope.patientAllergys
     })
     .then(() => {
-      console.log("allergy's added successfully");
+      Materialize.toast("allergy's added successfully", 2000);
     })
     .catch((err) =>{
-      console.log("err",err);
+      Materialize.toast("Already added to your account", 2000);
     })
 
   }

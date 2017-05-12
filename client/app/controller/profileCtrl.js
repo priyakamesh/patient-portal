@@ -1,8 +1,15 @@
 patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFactory){
-
+  $scope.active_portal = "";
+  $scope.activePortalButton = (id) =>{
+    $scope.active_portal = id
+    console.log("$scope.active_portal",typeof $scope.active_portal);
+  }
    $scope.currentUser = AuthFactory.getCurrentPatient()
-  console.log("$scope.currentUser.id",$scope.currentUser);
+   // $scope.currentUser.dob = $scope.currentUser.dob[0].DOB.split("T",2)
+   console.log("$scope.currentUser", $scope.currentUser);
+
 if($scope.currentUser.id) {
+  // $scope.currentUser.dob = $scope.currentUser.dob.split("T",2)[0]
   $http.get('http://localhost:3000/api/v1/doctors')
   .then((data) =>{
     $scope.doctorname = data.data.doctors
@@ -21,6 +28,7 @@ if($scope.currentUser.id) {
   .then((data) =>{
     console.log("data",data);
     $scope.patientInsurance = data.data.insurance
+    console.log("$scope.patientInsurance",$scope.patientInsurance);;
   })
   .catch((err) =>{
     console.log("err",err);

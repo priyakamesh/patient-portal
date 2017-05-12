@@ -12,61 +12,72 @@
   </div>
   <h1>Patient Portal</h1>
 <div id="mySidenav" class="sidenav">
-  <button ng-click="Dashboard = true">Dashboard</button>
-  <button ng-click="Insurance = true">Insurance</button>
-  <button ng-click="Medication = true">Medication</button>
-  <button ng-click="Release = true">Release of Medical Records</button>
-  <button ng-click="History = true">History</button>
-  <button ng-click="Allergy = true">Allergy</button>
-  <button ng-click="VisitSummary = true">Visit Summary</button>
+  <button ng-click="activePortalButton('Dashboard')">Dashboard</button>
+  <button ng-click="activePortalButton('Insurance')">Insurance</button>
+  <button ng-click="activePortalButton('Medication')">Medication</button>
+  <button ng-click="activePortalButton('Release')">Release of Medical Records</button>
+  <button ng-click="activePortalButton('History')">History</button>
+  <button ng-click="activePortalButton('Allergy')">Allergy</button>
+  <button ng-click="activePortalButton('VisitSummary')">Visit Summary</button>
 </div>
-<div ng-show="Dashboard" id = "Dashboard">
+<div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Personal Information</h5>
-      <div>{{currentUser.firstname}}</div>
-      <div>{{currentUser.lastname}}</div>
+      <div>{{currentUser.firstname}}  {{currentUser.lastname}}</div>
+      <p>{{currentUser.email}}</p>
       <div>{{currentUser.dob}}</div>
       <div>{{currentUser.ethnicity}}</div>
       <div>{{currentUser.address}}</div>
-      <div>{{currentUser.address}}</div>
+      <div>{{currentUser.phonenumber}}</div>
     </div>
   </div>
 </div>
-<div ng-show="Insurance" id = "Insurance">
+<div id = "Insurance" ng-if ="(active_portal === 'Insurance')" >
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Insurance Information</h5>
-      <div>{{patientInsurance.insuranceprovider}}</div>
-      <div>{{patientInsurance.groupid}}</div>
-      <div>{{patientInsurance.subscriberid}}</div>
-      <div>{{patientInsurance.insurance_type}}</div>
+      <div ng-repeat = "insurance in patientInsurance">
+        <div>Insurance provider: {{insurance.insuranceprovider}}</div>
+        <div>Group ID: {{insurance.groupid}}</div>
+        <div>Subscriber ID: {{insurance.subscriberid}}</div>
+        <div ng-if = "insurance.insurance_type_id === 1">Insurance Type: Primary</div>
+        <div ng-if = "insurance.insurance_type_id === 2">Insurance Type: Secondary</div>
+      </div>
     </div>
   </div>
 </div>
-<div ng-show="Medication">
+<div id="Medication" ng-if ="active_portal == 'Medication'">
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Medication Information</h5>
-      <div>{{medications.brandname}}</div>
-      <div>{{medications.drugname}}</div>
-      <div>{{medications.dosage}}</div>
-      <div>{{medications.route}}</div>
-      <div>{{medications.medication_type}}</div>
+      <div ng-repeat = "medication in medications" class="medication">
+        <h4>{{medication.brandname}}</h4>
+        <p>{{medication.drugname}}</p>
+        <p>{{medication.dosage}}</p>
+        <p>{{medication.route}}</p>
+        <p ng-if="medication.medication_type_id ===1">Current Medication</p>
+        <p ng-if="medication.medication_type_id ===2">Discontinued Medication</p>
+      </div>
     </div>
   </div>
 </div>
-<div ng-show="Release">
+<div id="Release"  ng-if ="active_portal == 'Release'">
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Release of Medical Information</h5>
-      <div>{{releasePerson.fullname}}</div>
-      <div>{{releasePerson.relation}}</div>
-      <div>{{releasePerson.phonenumber}}</div>
+      <div ng-if ="releasePerson.length === 0">No Release person added to your account.</div>
+      <div ng-repeat = "person in releasePerson" class="medication">
+
+        <div> Full Name: {{person.fullname}}</div>
+        <div>Relation: {{person.relation}}</div>
+        <div>Contact Information: {{person.phonenumber}}</div>
+      </div>
+
     </div>
   </div>
 </div>
-<div ng-show="History">
+<div id="History"  ng-if ="active_portal == 'History'">
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Social and Family History</h5>
@@ -75,7 +86,7 @@
     </div>
   </div>
 </div>
-<div ng-show="Allergy">
+<div id="Allergy"  ng-if ="active_portal == 'Allergy'">
   <div class="row">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Allergy Details</h5>
@@ -84,7 +95,7 @@
     </div>
   </div>
 </div>
-<div ng-show = "VisitSummary">
+<div id = "VisitSummary"  ng-if ="active_portal == 'VisitSummary'">
   <div class="row">
      <div class= "col s12 m6 center-align">
        <h5 class="card-title">Visit Summary</h5>

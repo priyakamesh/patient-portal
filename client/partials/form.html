@@ -4,7 +4,7 @@
       <div class="nav-wrapper">
         <!-- <a href="#!" class="brand-logo">Logo</a> -->
         <ul>
-          <li><a href="#/form">Update Information</a></li>
+          <li><a href="#/profile">Profile</a></li>
           <li><a href="/">Home</a></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
@@ -37,8 +37,15 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="ethnicity" type="text" class="validate" ng-model="currentUser.ethnicity">
+                      <input id="ethnicity" type="text" class="validate" list="listOfEthnicity" ng-model="currentUser.ethnicity">
                       <label for="ethnicity">Ethnicity</label>
+                      <datalist id="listOfEthnicity">
+                        <option> white</option>
+                        <option>black</option>
+                        <option>American Indian/Alaska Native</option>
+                        <option> Asian</option>
+                        <option> Native Hawaiian/Other Pacific Islander.</option>
+                      </datalist>
                     </div>
                   </div>
                   <div class="row">
@@ -82,7 +89,7 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="doctor_speciality" type="text" class="validate" list="speciality" ng-model = "doctorname.speciality">
+                      <input id="doctor_speciality" type="text" class="validate" list="speciality" ng-model = "doctorname.speciality" ng-change ="keydown()">
                       <label for="doctor_speciality">Speciality</label>
                       <datalist id="speciality">
                         <div ng-repeat = "doctor in doctorname">
