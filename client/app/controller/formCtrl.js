@@ -99,7 +99,11 @@ if($scope.currentUser.id) {
 
 
   $scope.personal = () =>{
-      console.log("$scope.fdob",$scope.dob);
+      console.log("$scope.fdob",typeof $scope.currentUser.dob);
+      $scope.currentUser.dob = JSON.stringify($scope.currentUser.dob)
+      console.log("typeof $scope.currentUser.dob",$scope.currentUser.dob);
+      $scope.currentUser.dob = $scope.currentUser.dob.split("T",2)[0].slice(1)
+      console.log("text",$scope.currentUser.dob);
     $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
       firstname: $scope.currentUser.firstname,
       lastname: $scope.currentUser.lastname,
