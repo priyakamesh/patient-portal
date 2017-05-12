@@ -12,7 +12,8 @@ const { getPatient,
   getPatientId,
 updatePatient,
 addMany,
-addManyHistory}= require('../controllers/patientCtrl')
+addManyHistory,
+logoutPatient}= require('../controllers/patientCtrl')
 
 const { getId, addPatientDoctor } = require('../controllers/patient_doctorCtrl')
 // const { getFoodAllergy, getDrugAllergy } = require('../controllers/patient_allergyCtrl')
@@ -32,6 +33,7 @@ router.get('/patient/:patient_id/doctor',getId)
 router.post('/addPatientDoctor/:id/:doctor_id',addPatientDoctor)
 router.post('/patient/:id/allergy',addMany)
 router.post('/patient/:id/history',addManyHistory)
+router.post('/patient/logout/:id', logoutPatient)
 // router.get('/foodallergy/:patient_id', getFoodAllergy)
 // router.get('/drugallergy/:patient_id', getDrugAllergy)
 module.exports = router;
