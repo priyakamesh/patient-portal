@@ -26,7 +26,32 @@ body {
     flex-grow: 1;
 }
 .check {
-  display: inline-block;
-  margin-right: 40px;
-  border: 1px solid grey;
+  display: block;
+    float: left;
+    width: 25%;
+  /*border: 1px solid grey;*/
 }
+label.sm {
+  display: block;
+  float: left;
+  width: 100%;
+   margin: 0;
+  padding: 0;
+}
+label.sm:last-child:after {
+  clear: both;
+  content: " ";
+  display: block;
+  height: 0px;
+  overflow: hidden;
+   margin: 0;
+  padding: 0;
+}
+ /* .check1 input {
+        margin: 0;
+        padding: 0;
+        display:block;
+        height:12px;
+        overflow:hidden
+    }
+*/

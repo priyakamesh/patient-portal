@@ -10,15 +10,86 @@
       </div>
     </nav>
   </div>
+  <h1>Patient Portal</h1>
 <div id="mySidenav" class="sidenav">
-  <button ng-click="showme = true">Dashboard</button>
-  <button>Insurance</button>
-  <button>Medication</button>
-  <button>Release of Medical Records</button>
-  <button>History</button>
-  <button>Allergy</button>
-  <button>Visit Summary</button>
+  <button ng-click="Dashboard = true">Dashboard</button>
+  <button ng-click="Insurance = true">Insurance</button>
+  <button ng-click="Medication = true">Medication</button>
+  <button ng-click="Release = true">Release of Medical Records</button>
+  <button ng-click="History = true">History</button>
+  <button ng-click="Allergy = true">Allergy</button>
+  <button ng-click="VisitSummary = true">Visit Summary</button>
 </div>
-<div ng-show="showme"><p>Hello</p></div>
-
+<div ng-show="Dashboard" id = "Dashboard">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Personal Information</h5>
+      <div>{{currentUser.firstname}}</div>
+      <div>{{currentUser.lastname}}</div>
+      <div>{{currentUser.dob}}</div>
+      <div>{{currentUser.ethnicity}}</div>
+      <div>{{currentUser.address}}</div>
+      <div>{{currentUser.address}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show="Insurance" id = "Insurance">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Insurance Information</h5>
+      <div>{{patientInsurance.insuranceprovider}}</div>
+      <div>{{patientInsurance.groupid}}</div>
+      <div>{{patientInsurance.subscriberid}}</div>
+      <div>{{patientInsurance.insurance_type}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show="Medication">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Medication Information</h5>
+      <div>{{medications.brandname}}</div>
+      <div>{{medications.drugname}}</div>
+      <div>{{medications.dosage}}</div>
+      <div>{{medications.route}}</div>
+      <div>{{medications.medication_type}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show="Release">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Release of Medical Information</h5>
+      <div>{{releasePerson.fullname}}</div>
+      <div>{{releasePerson.relation}}</div>
+      <div>{{releasePerson.phonenumber}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show="History">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Social and Family History</h5>
+      <div ng-repeat = "history in histories">
+      {{history.name}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show="Allergy">
+  <div class="row">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Allergy Details</h5>
+      <div ng-repeat = "allergy in allergys">
+      {{allergy.name}}</div>
+    </div>
+  </div>
+</div>
+<div ng-show = "VisitSummary">
+  <div class="row">
+     <div class= "col s12 m6 center-align">
+       <h5 class="card-title">Visit Summary</h5>
+       <p>No visit summary available.</p>
+     </div>
+  </div>
+</div>
 <!-- Use any element to open the sidenav -->
