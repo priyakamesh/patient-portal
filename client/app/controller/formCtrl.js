@@ -2,6 +2,10 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
   $scope.currentUser = AuthFactory.getCurrentPatient()
   console.log("$scope.currentUser.id",$scope.currentUser.id);
 if($scope.currentUser.id) {
+  $scope.date = new Date()
+  $(function() {
+    Materialize.updateTextFields();
+});
   $http.get('http://localhost:3000/api/v1/doctors')
   .then((data) =>{
     $scope.doctorname = data.data.doctors

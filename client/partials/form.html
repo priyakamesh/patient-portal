@@ -1,12 +1,13 @@
 <!-- http://mgonto.github.io/angular-wizard/ -->
 <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper navColor">
         <!-- <a href="#!" class="brand-logo">Logo</a> -->
         <ul>
-          <li><a href="#/profile">Profile</a></li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <li><a href="/">HOME</a></li>
+          <li><a href="#/profile">PROFILE</a></li>
+
+          <li><a href="/logout">LOGOUT</a></li>
         </ul>
       </div>
     </nav>
@@ -77,7 +78,7 @@
                 <h5>Facility Information</h5>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="full_name" type="text" class="validate" list="doctorname" name="doctor" ng-model="doctorname.fullname">
+                      <input id="full_name" type="text" class="validate" list="doctorname"  ng-model="doctorname.fullname">
                       <label for="full_name">Doctor Name</label>
                       <datalist id="doctorname">
                         <div ng-repeat = "doctor in doctorname">

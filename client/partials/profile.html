@@ -1,18 +1,20 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed ">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper navColor">
         <!-- <a href="#!" class="brand-logo">Logo</a> -->
         <ul>
-          <li><a href="#/form">Update Information</a></li>
-          <li><a href="/">Home</a></li>
-          <li><a href="#/logout">Logout</a></li>
+          <li><a href="/">HOME</a></li>
+          <li><a href="#/form">UPDATE INFORMATION</a></li>
+
+          <li><a href="#/logout">LOGOUT</a></li>
         </ul>
       </div>
     </nav>
   </div>
-  <h1>Patient Portal</h1>
+  <h1>PATIENT PORTAL</h1>
 <div id="mySidenav" class="sidenav">
   <button ng-click="activePortalButton('Dashboard')">Dashboard</button>
+  <button ng-click="activePortalButton('Doctor')">Doctor</button>
   <button ng-click="activePortalButton('Insurance')">Insurance</button>
   <button ng-click="activePortalButton('Medication')">Medication</button>
   <button ng-click="activePortalButton('Release')">Release of Medical Records</button>
@@ -21,23 +23,36 @@
   <button ng-click="activePortalButton('VisitSummary')">Visit Summary</button>
 </div>
 <div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
-  <div class="row">
-    <div class= "col s12 m6 center-align">
+  <div class="row block" >
+    <div class= "col s12 m6 center-align medication" >
       <h5 class="card-title">Personal Information</h5>
-      <div>{{currentUser.firstname}}  {{currentUser.lastname}}</div>
-      <p>{{currentUser.email}}</p>
-      <div>{{currentUser.dob}}</div>
-      <div>{{currentUser.ethnicity}}</div>
-      <div>{{currentUser.address}}</div>
-      <div>{{currentUser.phonenumber}}</div>
+      <h6> Full Name: {{currentUser.firstname}}  {{currentUser.lastname}}</h6>
+      <p> Email: {{currentUser.email}}</p>
+      <div> Date of Birth: {{currentUser.dob}}</div>
+      <div>Ethnicity: {{currentUser.ethnicity}}</div>
+      <div>Address: {{currentUser.address}}</div>
+      <div>Contact Information: {{currentUser.phonenumber}}</div>
+    </div>
+  </div>
+</div>
+<div id = "Doctor" ng-if ="active_portal == 'Doctor'" >
+  <div class="row block" >
+    <div class= "col s12 m6 center-align medication" >
+      <h5 class="card-title">Doctor Information</h5>
+      <div ng-repeat = "doctor in patientDoctor">
+      <h6> Full Name: {{doctor.fullname}}</h6>
+      <p>Speciality: {{doctor.speciality}}</p>
+      <p>Facility Address: {{doctor.address}}</p>
+      <p>Contact Information: {{doctor.phonenumber}}</p>
+      </div>
     </div>
   </div>
 </div>
 <div id = "Insurance" ng-if ="(active_portal === 'Insurance')" >
-  <div class="row">
+  <div class="row block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Insurance Information</h5>
-      <div ng-repeat = "insurance in patientInsurance">
+      <div ng-repeat = "insurance in patientInsurance" class="medication">
         <div>Insurance provider: {{insurance.insuranceprovider}}</div>
         <div>Group ID: {{insurance.groupid}}</div>
         <div>Subscriber ID: {{insurance.subscriberid}}</div>
@@ -48,7 +63,7 @@
   </div>
 </div>
 <div id="Medication" ng-if ="active_portal == 'Medication'">
-  <div class="row">
+  <div class="row block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Medication Information</h5>
       <div ng-repeat = "medication in medications" class="medication">
@@ -63,7 +78,7 @@
   </div>
 </div>
 <div id="Release"  ng-if ="active_portal == 'Release'">
-  <div class="row">
+  <div class="row block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Release of Medical Information</h5>
       <div ng-if ="releasePerson.length === 0">No Release person added to your account.</div>
@@ -78,28 +93,28 @@
   </div>
 </div>
 <div id="History"  ng-if ="active_portal == 'History'">
-  <div class="row">
+  <div class="row block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Social and Family History</h5>
-      <div ng-repeat = "history in histories">
+      <div ng-repeat = "history in histories" class="medication">
       {{history.name}}</div>
     </div>
   </div>
 </div>
 <div id="Allergy"  ng-if ="active_portal == 'Allergy'">
-  <div class="row">
+  <div class="row block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Allergy Details</h5>
-      <div ng-repeat = "allergy in allergys">
+      <div ng-repeat = "allergy in allergys" class="medication">
       {{allergy.name}}</div>
     </div>
   </div>
 </div>
 <div id = "VisitSummary"  ng-if ="active_portal == 'VisitSummary'">
-  <div class="row">
+  <div class="row block">
      <div class= "col s12 m6 center-align">
        <h5 class="card-title">Visit Summary</h5>
-       <p>No visit summary available.</p>
+       <p class="medication">No visit summary available.</p>
      </div>
   </div>
 </div>

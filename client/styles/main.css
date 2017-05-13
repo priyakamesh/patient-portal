@@ -1,6 +1,16 @@
-body {
-  background-color: lightgrey;
+
+html {
+  background: url('../images/background.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-align: center;
+
+}
+
+h1{
+  color: white;
 }
 
 .steps-indicator li.done a:before {
@@ -49,4 +59,15 @@ label.sm:last-child:after {
 }
 .medication {
   border: 1px solid black;
+}
+.navColor {
+  background-color: #0d47a1;
+
+}
+.block {
+  margin: 50px 0 0 400px;
+  /*border: 1px solid darkblue;
+  width:fit-content;
+  width:-webkit-fit-content;
+  width:-moz-fit-content;*/
 }
