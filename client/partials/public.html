@@ -1,8 +1,12 @@
-<h1>PATIENT PORTAL</h1>
-<div class="login">
+
+<div class="login float">
   <div class="row">
       <form class="col s12">
-        <div class="row">
+        <div class="row" id="wrapper">
+        <div class="main">
+          <h5 class="hover">Patient Portal</h5>
+         <p class="text"> HealthCare Support Portal facilitates better communication with your physician's office by providing convenient 24 x 7 access from the comfort and privacy of your own home or office.</p>
+        </div>
           <div class="input-field col s12">
             <input id="email" type="email" class="validate" ng-model="email">
             <label for="email">Email</label>
@@ -17,8 +21,8 @@
         <div class="row">
           <div class="input-field col s12">
             <a class="waves-effect waves-light btn blue darken-4" ng-click="login()">Login</a>
-            <a class="waves-effect waves-light btn blue darken-4
-              " ng-click = "forgotPassword()">Forgot Password ?</a>
+            <!-- <a class="waves-effect waves-light btn blue darken-4
+              " ng-click = "forgotPassword()">Forgot Password ?</a> -->
             <p>New User ?<a href="#/register">Register Here</a>
           </div>
         </div>

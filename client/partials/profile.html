@@ -11,16 +11,22 @@
       </div>
     </nav>
   </div>
-  <h1>PATIENT PORTAL</h1>
-<div id="mySidenav" class="sidenav">
-  <button ng-click="activePortalButton('Dashboard')">Dashboard</button>
-  <button ng-click="activePortalButton('Doctor')">Doctor</button>
-  <button ng-click="activePortalButton('Insurance')">Insurance</button>
-  <button ng-click="activePortalButton('Medication')">Medication</button>
-  <button ng-click="activePortalButton('Release')">Release of Medical Records</button>
-  <button ng-click="activePortalButton('History')">History</button>
-  <button ng-click="activePortalButton('Allergy')">Allergy</button>
-  <button ng-click="activePortalButton('VisitSummary')">Visit Summary</button>
+
+  <div class="welcome">
+    <h5 style = "text-transform: uppercase;">Hi {{currentUser.firstname}} {{currentUser.lastname}},</h5>
+    <p>
+
+    Welcome to the Patient Portal Managing your healthcare is an important step.. With this website, you will be able to manage your healthcare information by giving you the ability to: 1. Provide up-to-date personal and medical information. 2. Obtain, review, and print clinic lab results and medical information for your records to ,provide you with your healthcare information. 3. Search educational material to help you improve and manage your health. If you wish to speak to someone at our practice regarding an urgent care situation please call ***-***-**** to schedule an appointment or to reach the doctor that is on call.</p>
+  </div>
+  <div style="width:150px; margin-top:105px;" class="side-nav fixed">
+  <button ng-click="activePortalButton('Dashboard')" class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Dashboard</button>
+  <button ng-click="activePortalButton('Doctor')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Doctor</button>
+  <button ng-click="activePortalButton('Insurance')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Insurance</button>
+  <button ng-click="activePortalButton('Medication')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Medication</button>
+  <button ng-click="activePortalButton('Release')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Release of Medical Records</button>
+  <button ng-click="activePortalButton('History')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">History</button>
+  <button ng-click="activePortalButton('Allergy')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Allergy</button>
+  <button ng-click="activePortalButton('VisitSummary')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand"">Visit Summary</button>
 </div>
 <div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
   <div class="row block" >

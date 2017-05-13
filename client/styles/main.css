@@ -1,16 +1,15 @@
 
 html {
-  background: url('../images/background.gif') no-repeat center center fixed;
+  background: url('../images/background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
+  /*margin-left: 100px;*/
+  margin-right: 100px;
 
-}
 
-h1{
-  color: white;
 }
 
 .steps-indicator li.done a:before {
@@ -19,11 +18,41 @@ h1{
 .steps-indicator li.current a:before {
   background-color: #08f !important;
 }
+#wrapper .text {
+position:relative;
+bottom:0px;
+left:0px;
+visibility:hidden;
+}
 
+#wrapper:hover .text {
+visibility:visible;
+}
+#wrapperButton .text {
+position:relative;
+bottom:0px;
+left:0px;
+visibility:hidden;
+}
+
+#wrapperButton:hover .text {
+visibility:visible;
+}
+
+.sideButton {
+   width:150px;
+   height: 50px;
+}
+.welcome {
+  margin: 50px auto auto 150px;
+}
 .login {
   background-color: #fff;
   display: inline-block;
-  width: 700px;
+  width: 500px;
+  text-align: center;
+  margin-top: 100px;
+  box-shadow: 10px 10px 10px #888888;
 }
 
 .container{

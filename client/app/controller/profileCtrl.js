@@ -1,5 +1,7 @@
 patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFactory){
+   $('.tooltipped').tooltip({delay: 50});
   $scope.active_portal = "";
+
   $scope.activePortalButton = (id) =>{
     $scope.active_portal = id
     console.log("$scope.active_portal",typeof $scope.active_portal);
