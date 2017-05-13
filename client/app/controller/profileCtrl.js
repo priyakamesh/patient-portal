@@ -1,5 +1,8 @@
 patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFactory){
    $('.tooltipped').tooltip({delay: 50});
+   $scope.goTo = () => {
+    $location.url( '/form' );
+   };
   $scope.active_portal = "";
 
   $scope.activePortalButton = (id) =>{
