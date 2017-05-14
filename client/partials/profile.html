@@ -28,8 +28,9 @@
   <button ng-click ='goTo()' class="sideButton" > Update Information</button>
 </div>
 <div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
-  <div class="row block" >
-    <div class= "col s12 m6 center-align medication" >
+  <div class="card block" >
+    <div class= "col s12 m6 center-align medication card-content" >
+
       <h5 class="card-title">Personal Information</h5>
       <h6> Full Name: {{currentUser.firstname}}  {{currentUser.lastname}}</h6>
       <p> Email: {{currentUser.email}}</p>
@@ -37,6 +38,12 @@
       <div>Ethnicity: {{currentUser.ethnicity}}</div>
       <div>Address: {{currentUser.address}}</div>
       <div>Contact Information: {{currentUser.phonenumber}}</div>
+      <button class="activator">Edit Information</button>
+
+    </div>
+     <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
     </div>
   </div>
 </div>

@@ -8,8 +8,8 @@
          <p class="text"> HealthCare Support Portal facilitates better communication with your physician's office by providing convenient 24 x 7 access from the comfort and privacy of your own home or office.</p>
         </div>
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" ng-model="email">
-            <label for="email">Email</label>
+            <input id="email" type="email" class="validate" ng-model="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
+            <label for="email" data-error = "wrong">Email</label>
           </div>
         </div>
         <div class="row">
