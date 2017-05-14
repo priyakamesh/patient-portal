@@ -46,3 +46,11 @@ module.exports.addInsurance = ({params:{id},body},res,next) =>{
   })
   .catch((err) =>{ next(err)})
 }
+module.exports.deletePatientInsurance = ({params:{id}}, res, next) =>{
+  Insurance.where({id:id})
+  .destroy()
+  .then(() =>{
+    res.status(200).json({"msg": "deleted"})
+  })
+  .catch((err) => next(err))
+}

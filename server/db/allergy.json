@@ -18,8 +18,8 @@
   {"name": "Acyclovir","description":"","allergy_type_id":2},
   {"name": "DIARRHEA COLIC","description":"","allergy_type_id":2},
   {"name": "ESIKA","description":"","allergy_type_id":2},
-  {"name": "ORCHID BY H E B","description":"","allergy_type_id":2},
-  {"name": "Metoprolol Tartrate","description":"","allergy_type_id":2},
+  {"name": "ORCHID","description":"","allergy_type_id":2},
+  {"name": "Metoprolol","description":"","allergy_type_id":2},
   {"name": "Shopko","description":"","allergy_type_id":2},
   {"name": "Latex","description":"","allergy_type_id":2}
 ]

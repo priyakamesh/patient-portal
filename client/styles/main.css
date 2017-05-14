@@ -1,6 +1,15 @@
-body {
-  background-color: lightgrey;
+
+html {
+  background: url('../images/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-align: center;
+  /*margin-left: 100px;*/
+  margin-right: 100px;
+
+
 }
 
 .steps-indicator li.done a:before {
@@ -10,10 +19,39 @@ body {
   background-color: #08f !important;
 }
 
+#wrapperButton .text {
+position:relative;
+bottom:0px;
+left:0px;
+visibility:hidden;
+}
+
+#wrapperButton:hover .text {
+visibility:visible;
+}
+
+.sideButton {
+   width:150px;
+   height: 50px;
+}
+.welcome {
+  margin: 50px auto auto 150px;
+}
 .login {
   background-color: #fff;
   display: inline-block;
-  width: 700px;
+  width: 500px;
+  text-align: center;
+  margin-top: 100px;
+  box-shadow: 10px 10px 10px #888888;
+}
+.form {
+  background-color: #fff;
+  display: inline-block;
+  width: 500px;
+  text-align: center;
+  margin-top: auto;
+  box-shadow: 10px 10px 10px #888888;
 }
 
 .container{
@@ -31,12 +69,16 @@ body {
     width: 25%;
   /*border: 1px solid grey;*/
 }
+/*input[type='checkbox']{
+  display: inline-block;
+  width: 180px;
+}*/
 label.sm {
   display: block;
   float: left;
-  width: 100%;
+  width: 120%;
    margin: 0;
-  padding: 0;
+  padding-right: 50px;
 }
 label.sm:last-child:after {
   clear: both;
@@ -47,11 +89,15 @@ label.sm:last-child:after {
    margin: 0;
   padding: 0;
 }
- /* .check1 input {
-        margin: 0;
-        padding: 0;
-        display:block;
-        height:12px;
-        overflow:hidden
-    }
-*/
+
+.navColor {
+  background-color: #0d47a1;
+
+}
+.block {
+  margin: 50px 0 0 200px;
+  /*border: 1px solid darkblue;
+  width:fit-content;
+  width:-webkit-fit-content;
+  width:-moz-fit-content;*/
+}

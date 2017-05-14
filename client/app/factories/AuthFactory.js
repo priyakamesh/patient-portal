@@ -1,6 +1,7 @@
 patient_portal.factory("AuthFactory", function($http) {
   var currentPatient = {};
-  return { getter: (email,password,confirmpassword) => {
+  return {
+    getter: (email,password,confirmpassword) => {
       return $http.post(`http://localhost:3000/api/v1/patient/new`, {
         email : email,
         password: password,
@@ -21,6 +22,7 @@ patient_portal.factory("AuthFactory", function($http) {
     })
     .then((data) =>{
       currentPatient = data.data.patient
+      console.log("currentPatient",currentPatient);
       return data.data.patient.id
     })
     .catch ((data) =>{
@@ -29,6 +31,7 @@ patient_portal.factory("AuthFactory", function($http) {
 
   },
   getCurrentPatient: () =>{
+    console.log("currentPatient from getCurrentPatient",currentPatient);
     return currentPatient
   }
 }

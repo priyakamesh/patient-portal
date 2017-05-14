@@ -30,3 +30,11 @@ module.exports.addReleasePerson = ({params:{id}, body}, res, next) =>{
   })
 
 }
+module.exports.deleteReleasePerson= ({params:{id}}, res, next) =>{
+  Release.where({id:id})
+  .destroy()
+  .then(() =>{
+    res.status(200).json({"msg": "deleted"})
+  })
+  .catch((err) => next(err))
+}

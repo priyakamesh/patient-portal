@@ -136,3 +136,7 @@ module.exports.addManyHistory = ({params:{id},body},res,next) =>{
   })
   .catch((err) =>{ next(err)})
 }
+module.exports.logoutPatient = (req,res,next) =>{
+  let id = req.params.id
+
+}
