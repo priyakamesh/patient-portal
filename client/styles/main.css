@@ -59,6 +59,7 @@ visibility:visible;
 }
 .fixed{
     width: 200px;
+    height: 100%;
 }
 .flex-item{
     flex-grow: 1;

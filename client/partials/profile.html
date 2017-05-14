@@ -1,11 +1,11 @@
 <div class="navbar-fixed ">
     <nav>
       <div class="nav-wrapper navColor">
-        <!-- <a href="#!" class="brand-logo">Logo</a> -->
-        <ul>
-
-          <li><a href="#/logout">LOGOUT</a></li>
-        </ul>
+      <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right">
+        <li>{{currentUser.email}}</li>
+        <li> <a href="#/logout">Logout</a></li>
+      </ul>
       </div>
     </nav>
   </div>
@@ -16,7 +16,7 @@
 
     Welcome to the Patient Portal Managing your healthcare is an important step.. With this website, you will be able to manage your healthcare information by giving you the ability to: 1. Provide up-to-date personal and medical information. 2. Obtain, review, and print clinic lab results and medical information for your records to ,provide you with your healthcare information. 3. Search educational material to help you improve and manage your health. If you wish to speak to someone at our practice regarding an urgent care situation please call ***-***-**** to schedule an appointment or to reach the doctor that is on call.</p>
   </div>
-  <div style="width:150px; margin-top:105px;" class="side-nav fixed">
+  <div style="width:150px; margin-top:65px;" class="side-nav fixed">
   <button ng-click="activePortalButton('Dashboard')" class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Dashboard</button>
   <button ng-click="activePortalButton('Doctor')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Doctor</button>
   <button ng-click="activePortalButton('Insurance')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Insurance</button>
@@ -25,11 +25,54 @@
   <button ng-click="activePortalButton('History')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">History</button>
   <button ng-click="activePortalButton('Allergy')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Allergy</button>
   <button ng-click="activePortalButton('VisitSummary')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Visit Summary</button>
-  <button ng-click ='goTo()' class="sideButton" > Update Information</button>
+  <!-- <button ng-click ='goTo()' class="sideButton" > Update Information</button> -->
 </div>
 <div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
   <div class="card block" >
-    <div class= "col s12 m6 center-align medication card-content" >
+   <form class="col s12">
+                <h5>Personal Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" ng-model="currentUser.firstname">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate" ng-model="currentUser.lastname">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-field col s6">
+                      <input  type="date" ng-model="currentUser.dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="ethnicity" type="text" class="validate" list="listOfEthnicity" ng-model="currentUser.ethnicity">
+                      <label for="ethnicity">Ethnicity</label>
+                      <datalist id="listOfEthnicity">
+                        <option> white</option>
+                        <option>black</option>
+                        <option>American Indian/Alaska Native</option>
+                        <option> Asian</option>
+                        <option> Native Hawaiian/Other Pacific Islander.</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="address" type="text" class="validate" ng-model="currentUser.address">
+                      <label for="address">Address</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phone" type="text" class="validate" ng-model="currentUser.phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
+                      <label for="phone" data-error="wrong">Phone Number</label>
+                    </div>
+                  </div>
+              </form>
+    <!-- <div class= "col s12 m6 center-align medication card-content" >
 
       <h5 class="card-title">Personal Information</h5>
       <h6> Full Name: {{currentUser.firstname}}  {{currentUser.lastname}}</h6>
@@ -50,7 +93,7 @@
       <input type="text" ng-model="currentUser.address" value="currentUser.address" class=" input-field col s6 l6">
       <input type="text" ng-model="currentUser.phonenumber" value="currentUser.phonenumber" class=" input-field col s6 l6">
       <button ng-click = "personal()">Submit</button>
-    </div>
+    </div> -->
   </div>
 </div>
 <div id = "Doctor" ng-if ="active_portal == 'Doctor'" >
