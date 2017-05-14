@@ -1,13 +1,18 @@
 <div class="navbar-fixed ">
     <nav>
+    <a data-activates="slide-out" class="button-collapse" href="#/profile"><i class="material-icons">menu</i></a>
       <div class="nav-wrapper navColor">
-      <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right">
+
+      <ul class="right  hide-on-med-and-down">
         <li>{{currentUser.email}}</li>
         <li> <a href="#/logout">Logout</a></li>
       </ul>
+
       </div>
     </nav>
+    <ul class="side-nav" id="slide-out">
+        <li> <a href="#/logout">Logout</a></li>
+      </ul>
   </div>
 
   <div class="welcome">

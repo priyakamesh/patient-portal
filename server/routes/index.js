@@ -11,6 +11,36 @@ router.use(require('./release_med_info-route'))
 router.use(require('./medication-route'))
 router.get('/',function (req,res) {
   res.json ({
+    /**
+ * @swagger
+ * definition:
+ *   Doctor:
+ *     properties:
+ *       fullname:
+ *         type: string
+ *       speciality:
+ *         type: string
+ *       facilityaddress:
+ *         type: string
+ *       phonenumber:
+ *         type: string
+ */
+
+    /**
+ * @swagger
+ * /api/v1/doctors:
+ *   get:
+ *     tags:
+ *       - Doctors
+ *     description: Returns all doctors
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: An array of doctors
+ *         schema:
+ *           $ref: '#/definitions/Doctor'
+ */
     "list of doctors": "http://localhost:3000/api/v1/doctors",
     "addDoctor": "http://localhost:3000/api/v1/doctors/new",
     "patient_doctor": "http://localhost:3000/api/v1/patient/:id/doctor",

@@ -9,9 +9,31 @@ const KnexSessionStore = require('connect-session-knex')(session);
 const cookieParser = require('cookie-parser');
 const { knex } = require('./db/database');
 var routes = require('./routes/');
-
+var swaggerJSDoc = require('swagger-jsdoc');
 var app = express();
 
+// swagger definition
+var swaggerDefinition = {
+  info: {
+    title: 'Patient Portal API',
+    version: '1.0.0',
+    description: 'Demonstrating how to describe a RESTful API with Swagger',
+  },
+  host: 'localhost:3000',
+  basePath: '/',
+};
+
+// options for the swagger docs
+var options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['./routes/*.js'],
+};
+
+// initialize swagger-jsdoc
+var swaggerSpec = swaggerJSDoc(options);
+app.set('view engine', 'pug');
 //middlewaes
 app.use(cors())
 app.use(cookieParser('secretpatient'));
@@ -26,7 +48,7 @@ app.use(session({
   saveUninitialized: false,
   secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
 }));
-
+app.use(express.static(path.join(__dirname, 'public')));
 require('./lib/passport-strategies')
 app.use(passport.initialize())
 app.use(passport.session())
@@ -41,6 +63,11 @@ app.use(bodyParser.json());
 
 
 app.use('/api/v1/', routes)
+// serve swagger
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
