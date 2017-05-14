@@ -19,3 +19,12 @@ module.exports.addPatientDoctor = ({params: {id, doctor_id}}, res, next) =>{
   })
   .catch((err) => next(err))
 }
+
+module.exports.deletePatientDoctor = ({params: {id,doctor_id}}, res, next) =>{
+  Patient_Doctor.where({patient_id: id, doctor_id:doctor_id})
+  .destroy()
+  .then((data) =>{
+    return res.json({"msg" :"deleted"})
+  })
+  .catch((err) => next(err))
+}

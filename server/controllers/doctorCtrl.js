@@ -16,7 +16,9 @@ module.exports.getAllDoctors = (req,res,next) => {
 }
 
 module.exports.getDoctor = ({params: {fullname}}, res, next) =>{
-  Doctor.getDoctor(fullname)
+  var doctorName = fullname.replace("%20", " ")
+  console.log("doctorName",doctorName);
+  Doctor.getDoctor(doctorName)
   .then((doctor) =>{
     res.status(200).json({doctor});
   })
