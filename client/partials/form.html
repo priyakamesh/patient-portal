@@ -17,12 +17,12 @@
       </div>
     </nav>
   </div>
-<div id="main_content_wrap" class="outer login">
+<div id="main_content_wrap" class="outer form">
       <section id="main_content" class="inner main-inner" ng-app="wizard-sample" ng-controller="PublicCtrl">
         <wizard on-finish="finished()">
 
           <wz-step wz-title="Personal Information">
-              <div class="row">
+              <div class="row card">
                 <form class="col s12">
                 <h5>Personal Information</h5>
                   <div class="row">
@@ -132,7 +132,7 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="phonenumber" type="text" class="validate" ng-model="releasePerson.phone" ng-pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
+                      <input id="phonenumber" type="text" class="validate" ng-model="releasePerson.phone" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
                       <label for="phonenumber" data-error="wrong">Phone Number</label>
                     </div>
                   </div>
@@ -294,14 +294,14 @@
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="NEXT" />
           </wz-step>
-          <wz-step wz-title="Finish">
+          <!-- <wz-step wz-title="Finish">
             <h1>Finish him</h1>
             <p>Finally this ends!</p>
             <input type="button" wz-previous="logStep()" value="BACK" />
             <input type="button" wz-next="logStep()" value="END" />
             <input type="button" ng-click="goBack()" value="Click here to start again" />
             <input type="button" wz-reset value="Click here to reset" />
-          </wz-step>
+          </wz-step> -->
         </wizard>
       </section>
     </div>

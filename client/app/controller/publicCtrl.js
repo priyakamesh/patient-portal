@@ -1,4 +1,6 @@
 patient_portal.controller('PublicCtrl', function($scope, AuthFactory,$location, webStorage){
+   $('.tooltipped').tooltip({delay: 50});
+
   $scope.login = () => {
      if (($scope.email === undefined)&&($scope.password === undefined)){
       Materialize.toast("Please enter the email and password",2000)

@@ -18,16 +18,7 @@ html {
 .steps-indicator li.current a:before {
   background-color: #08f !important;
 }
-#wrapper .text {
-position:relative;
-bottom:0px;
-left:0px;
-visibility:hidden;
-}
 
-#wrapper:hover .text {
-visibility:visible;
-}
 #wrapperButton .text {
 position:relative;
 bottom:0px;
@@ -52,6 +43,14 @@ visibility:visible;
   width: 500px;
   text-align: center;
   margin-top: 100px;
+  box-shadow: 10px 10px 10px #888888;
+}
+.form {
+  background-color: #fff;
+  display: inline-block;
+  width: 500px;
+  text-align: center;
+  margin-top: auto;
   box-shadow: 10px 10px 10px #888888;
 }
 
@@ -90,9 +89,7 @@ label.sm:last-child:after {
    margin: 0;
   padding: 0;
 }
-.medication {
-  border: 1px solid black;
-}
+
 .navColor {
   background-color: #0d47a1;
 

@@ -3,19 +3,15 @@ patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFa
    $scope.goTo = () => {
     $location.url( '/form' );
    };
+   $(function() {
+    Materialize.updateTextFields();
+  });
   $scope.active_portal = "";
 
   $scope.activePortalButton = (id) =>{
     $scope.active_portal = id
-    console.log("$scope.active_portal",typeof $scope.active_portal);
   }
    $scope.currentUser = AuthFactory.getCurrentPatient()
-
-   // $scope.currentUser.dob = $scope.currentUser.dob[0].DOB.split("T",2)
-   console.log("$scope.currentUser", $scope.currentUser);
-   $(function() {
-    Materialize.updateTextFields();
-  });
 if($scope.currentUser.id) {
   // $scope.currentUser.dob = $scope.currentUser.dob.split("T",2)[0]
   $http.get('http://localhost:3000/api/v1/doctors')
@@ -93,7 +89,7 @@ if($scope.currentUser.id) {
 
   $http.get(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/medication`)
   .then((data) =>{
-    console.log("data.data",data.data.medications);
+    console.log("$scope.medications",data.data.medications);
     $scope.medications = data.data.medications
   })
   .catch((err) =>{
@@ -112,6 +108,80 @@ if($scope.currentUser.id) {
     })
     .then((data) =>{
       Materialize.toast("Updated personal Information successfully",2000)
+    })
+  }
+  $scope.deleteDoctor = (id) =>{
+    $http.delete(`http://localhost:3000/api/v1/deletePatientDoctor/${$scope.currentUser.id}/${id}`)
+    .then((data) => {
+      $(`#${id}`).remove()
+      $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/doctor`)
+      .then((data) =>{
+        $scope.patientDoctor = data.data.doctor
+        console.log("$scope.patientDoctor",$scope.patientDoctor);
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+    })
+  }
+  $scope.addDoctor = () =>{
+    $location.url("/form")
+  }
+  $scope.remove = (id) =>{
+    $http.delete(`http://localhost:3000/api/v1//insurance/${id}`)
+    .then(() =>{
+      $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
+        .then((data) =>{
+          console.log("data",data);
+          $scope.patientInsurance = data.data.insurance
+          console.log("$scope.patientInsurance",$scope.patientInsurance);;
+        })
+        .catch((err) =>{
+          console.log("err",err);
+        })
+    })
+    $(`#${id}`).remove()
+  }
+  $scope.removeMedication = (id, medication_type_id) =>{
+    if(medication_type_id ===1){
+      $http.delete(`http://localhost:3000/api/v1//patients/${$scope.currentUser.id}/currentmedication/${id}`)
+      .then(() =>{
+        $(`#${id}`).remove()
+        $http.get(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/medication`)
+        .then((data) =>{
+          console.log("data.data",data.data.medications);
+          $scope.medications = data.data.medications
+        })
+        .catch((err) =>{
+          console.log("err",err);
+        })
+      })
+    }
+    else {
+      $http.delete(`http://localhost:3000/api/v1//patients/${$scope.currentUser.id}/dismedication/${id}`)
+      .then(() =>{
+        $http.get(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/medication`)
+        .then((data) =>{
+          console.log("data.data",data.data.medications);
+          $scope.medications = data.data.medications
+        })
+        .catch((err) =>{
+          console.log("err",err);
+        })
+      })
+    }
+  }
+  $scope.removeRelease = (id) =>{
+    $http.delete(`http://localhost:3000/api/v1/release_med_info/${id}`)
+    .then(() =>{
+      $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info`)
+        .then((data) =>{
+          $scope.releasePerson = data.data
+          console.log("$scope.releasePerson",$scope.releasePerson);
+        })
+        .catch((err) =>{
+          console.log("err",err);
+        })
     })
   }
 

@@ -105,220 +105,6 @@ if($scope.currentUser.id) {
   })
 
 
-
-
-
- //  $scope.personal = () =>{
- //      console.log("$scope.fdob",typeof $scope.currentUser.dob);
- //      $scope.currentUser.dob = JSON.stringify($scope.currentUser.dob)
- //      console.log("typeof $scope.currentUser.dob",$scope.currentUser.dob);
- //      $scope.currentUser.dob = $scope.currentUser.dob.split("T",2)[0].slice(1)
- //      console.log("text",$scope.currentUser.dob);
- //    $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
- //      firstname: $scope.currentUser.firstname,
- //      lastname: $scope.currentUser.lastname,
- //      dob: $scope.currentUser.dob,
- //      ethnicity: $scope.currentUser.ethnicity,
- //      address: $scope.currentUser.address,
- //      phonenumber: $scope.currentUser.phonenumber
- //    })
- //    .then((data) =>{
- //      Materialize.toast("Updated personal Information successfully",2000)
- //    })
- //  }
-
- //  $scope.facility = (id) =>{
- //    // console.log("$scope.doctorname.fullname",$scope.doctorname.fullname);
- //    // $http.post(`http://localhost:3000/api/v1/doctors/new`, {
- //    //   fullname: $scope.doctorname.fullname,
- //    //   speciality: $scope.doctorname.speciality,
- //    //   address: $scope.doctorname.address,
- //    //   phonenumber: $scope.doctorname.phonenumber
- //    // })
- //    // .then((data) =>{
- //    //   $http.post(`http://localhost:3000/api/v1/doctors/check`, {
- //    //     fullname: $scope.doctorname.fullname,
- //    //     speciality: $scope.doctorname.speciality,
- //    //     address: $scope.doctorname.address,
- //    //     phonenumber: $scope.doctorname.phonenumber
- //    //   })
- //    //     .then((data) =>{
- //    //       console.log("data",data.data);
- //    //     })
- //    // })
- //    $scope.doctorfullname = $('#full_name').val();
- //    console.log("$scope.doctorfullname",$scope.doctorfullname);
- //    $http.get(`http://localhost:3000/api/v1/doctors/check/${$scope.doctorfullname}`)
- //    .then((data) =>{
- //      $scope.doctorid = data.data.doctor[0].id
- //      console.log("$scope.doctorid",$scope.doctorid);
- //    $http.post(`http://localhost:3000/api/v1/addPatientDoctor/${$scope.currentUser.id}/${$scope.doctorid}`,{
- //      patient_id: $scope.currentUser.id,
- //      doctor_id: $scope.doctorid
- //    })
- //    .then((data) =>{
- //      console.log("data",data);
- //      Materialize.toast(`${$scope.doctorfullname} is added to your Facility Information`,2000)
- //    })
- //    .catch((data) =>{
- //      console.log("data from catch",data);
- //      Materialize.toast(`${$scope.doctorfullname} is already in your profile`,2000)
- //    })
- //    })
- //    // .catch((data) =>{
- //    //   console.log("im in catch");
- //    //   $http.get(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/doctor`)
- //    //   .then((data) =>{
- //    //     if(data.data.doctor.length === 0){
- //    //       console.log("$scope.doctorname",$scope.id);
- //    //     }
- //    //   })
- //    // })
- //  }
-
- //  $scope.insurance = () =>{
- //    $scope.insuranceType = $('#insuranceType').val();
- //    console.log("$scope.insurance",$scope.insurance);
- //    console.log("$scope.insuranceprovider",$scope.patientInsurance.insurance_type);
- //    if ($scope.insuranceType === 'Primary'){
- //      $scope.patientInsurance.insurance_type_id = 1
-
- //    }
- //    else {
- //      $scope.patientInsurance.insurance_type_id = 2
- //    }
- //    $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
- //      insuranceprovider: $scope.patientInsurance.insuranceprovider,
- //      groupid: $scope.patientInsurance.groupid,
- //      subscriberid: $scope.patientInsurance.subscriberid,
- //      insurance_type_id: $scope.patientInsurance.insurance_type_id,
- //      patient_id: $scope.currentUser.id
- //    })
- //    .then(() => {
- //      Materialize.toast("insurance details added successfully")
- //    })
- //    .catch((err) =>{
- //      console.log("err",err);
- //    })
- //  }
-
- //  $scope.release = () =>{
- //    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info/new`,{
- //      fullname: $scope.releasePerson.fullname,
- //      relation: $scope.releasePerson.relation,
- //      phonenumber: $scope.releasePerson.phone,
- //      patient_id: $scope.currentUser.id
- //    })
- //    .then(() =>{
- //      Materialize.toast( `${$scope.releasePerson.fullname} added as your release person`, 2000)
- //    })
- //    .catch((err) =>{
- //      Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
- //    })
- //  }
-
- //  $scope.allergy = () =>{
- //    $scope.patientAllergys = [];
- //    $('input[type=checkbox]:checked').map(function() {
- //                $scope.patientAllergys.push($(this).val());
- //    });
- //    // $scope.patientAllergys = $scope.patientAllergys.push(foodallergys,drugallergys)
- //    console.log("$scope.patientAllergys",$scope.patientAllergys);
- //    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`,{
- //      allergy_id : $scope.patientAllergys
- //    })
- //    .then(() => {
- //      Materialize.toast("allergy's added successfully", 2000);
- //    })
- //    .catch((err) =>{
- //      Materialize.toast("Already added to your account", 2000);
- //    })
-
- //  }
- //  $scope.history = () =>{
- //    $scope.patientHistory = [];
- //    $scope.socialHistoryFreqUnit = [];
- //    $('input[name="familyHistories"]:checked').map(function() {
- //                $scope.patientHistory.push($(this).val());
- //    });
- //    $('input[name="socialHistories"]:checked').map(function() {
- //                $scope.socialHistoryFreqUnit.push($(this).val());
- //    });
- //    $scope.socialHistoryFreqUnit.push($scope.histories.frequency)
- //    $scope.socialHistoryFreqUnit.push($scope.histories.unit)
- //    $scope.patientHistory.push($scope.socialHistoryFreqUnit)
- //    console.log("$scope.patientHistory",$scope.patientHistory);
- //    console.log("$scope.patientHistory.frequency",$scope.histories.frequency);
- //    console.log("$scope.patientHistory.unit",$scope.histories.unit);
- //    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
- //      history_id : $scope.patientHistory
- //    })
- //    .then(() => {
- //      console.log("histories added successfully");
- //    })
- //    .catch((err) =>{
- //      console.log("err",err);
- //    })
-
- //  }
- //  // $scope.searchDrug = () =>{
- //  //   $scope.medications.brandname =$scope.medications.brandname.replace(" ", "+")
- //  //   console.log("$scope.medications.brandname",$scope.medications.brandname);
- //  //   $http.get(`https://api.fda.gov/drug/label.json?api_key=yjusxabYX19cgWILvafjh0IwhOWkxEOv7MZ50v9c&search=brand_name:${$scope.medications.brandname}&limit=1`)
- //  //   .then((data) =>{
- //  //     console.log("data",data);
- //  //   })
- //  //   .catch((err) =>{
- //  //     console.log("err",err);
- //  //   })
- //  // }
- //  $scope.medication = () =>{
- //    console.log("$scope.medications.brandname",$scope.medications.brandname);
- //    console.log("$scope.medications.drugname",$scope.medications.drugname);
- //    console.log("$scope.medications.dosage",$scope.medications.dosage);
- //    console.log("$scope.medications.medication_type",$scope.medications.medication_type);
- //    $scope.medications.route = $("#route").val()
- //    console.log("$scope.medications.route",$scope.medications.route);
- //    if ($scope.medications.medication_type === 'Current') {
- //      $scope.medications.medication_type_id = 1
- //    } else {
- //      $scope.medications.medication_type_id = 2
- //    }
-
- //    if($scope.medications.medication_type_id === 1) {
- //      $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/currentmedication/new`,{
- //        brandname: $scope.medications.brandname,
- //        drugname: $scope.medications.drugname,
- //        dosage: $scope.medications.dosage,
- //        route: $scope.medications.route,
- //        medication_type_id: $scope.medications.medication_type_id,
- //        patient_id: $scope.currentUser.id
- //      })
- //      .then(() =>{
- //        Materialize.toast("medications added successfully", 2000)
- //      })
- //      .catch((err) =>{
- //        console.log("err",err);
- //      })
- //  }
- //  else {
- //    $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/dismedication/new`,{
- //        brandname: $scope.medications.brandname,
- //        drugname: $scope.medications.drugname,
- //        dosage: $scope.medications.dosage,
- //        route: $scope.medications.route,
- //        medication_type_id: $scope.medications.medication_type_id,
- //        patient_id: $scope.currentUser.id
- //      })
- //      .then(() =>{
- //        Materialize.toast("medications added successfully", 2000)
- //      })
- //      .catch((err) =>{
- //        console.log("err",err);
- //      })
- //  }
- // }
-
  $scope.finish = () =>{
   $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
       firstname: $scope.currentUser.firstname,
@@ -349,35 +135,41 @@ if($scope.currentUser.id) {
     else {
       $scope.patientInsurance.insurance_type_id = 2
     }
-    $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
-      insuranceprovider: $scope.patientInsurance.insuranceprovider,
-      groupid: $scope.patientInsurance.groupid,
-      subscriberid: $scope.patientInsurance.subscriberid,
-      insurance_type_id: $scope.patientInsurance.insurance_type_id,
-      patient_id: $scope.currentUser.id
-    })
-    .catch((err) =>{
-      console.log("err",err);
-    })
-  $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info/new`,{
-      fullname: $scope.releasePerson.fullname,
-      relation: $scope.releasePerson.relation,
-      phonenumber: $scope.releasePerson.phone,
-      patient_id: $scope.currentUser.id
-    })
-    .catch((err) =>{
-      Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
-    })
+    if($scope.patientInsurance.insuranceprovider !== null) {
+      $http.post(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`,{
+        insuranceprovider: $scope.patientInsurance.insuranceprovider,
+        groupid: $scope.patientInsurance.groupid,
+        subscriberid: $scope.patientInsurance.subscriberid,
+        insurance_type_id: $scope.patientInsurance.insurance_type_id,
+        patient_id: $scope.currentUser.id
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+    }
+    if($scope.releasePerson.fullname !== null) {
+      $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info/new`,{
+          fullname: $scope.releasePerson.fullname,
+          relation: $scope.releasePerson.relation,
+          phonenumber: $scope.releasePerson.phone,
+          patient_id: $scope.currentUser.id
+        })
+        .catch((err) =>{
+          Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
+        })
+    }
   $scope.patientAllergys = [];
     $('input[type=checkbox]:checked').map(function() {
                 $scope.patientAllergys.push($(this).val());
     });
-    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`,{
-      allergy_id : $scope.patientAllergys
-    })
-    .catch((err) =>{
-      Materialize.toast("Already added to your account", 2000);
-    })
+    if($scope.patientAllergys.lemgth >0){
+      $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`,{
+        allergy_id : $scope.patientAllergys
+      })
+      .catch((err) =>{
+        Materialize.toast("Already added to your account", 2000);
+      })
+    }
      $scope.patientHistory = [];
     $scope.socialHistoryFreqUnit = [];
     $('input[name="familyHistories"]:checked').map(function() {
@@ -389,12 +181,14 @@ if($scope.currentUser.id) {
     $scope.socialHistoryFreqUnit.push($scope.histories.frequency)
     $scope.socialHistoryFreqUnit.push($scope.histories.unit)
     $scope.patientHistory.push($scope.socialHistoryFreqUnit)
-    $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
-      history_id : $scope.patientHistory
-    })
-    .catch((err) =>{
-      console.log("err",err);
-    })
+    if($scope.patientHistory.length > 0){
+      $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
+        history_id : $scope.patientHistory
+      })
+      .catch((err) =>{
+        console.log("err",err);
+      })
+    }
    $scope.medications.route = $("#route").val()
     if ($scope.medications.medication_type === 'Current') {
       $scope.medications.medication_type_id = 1
@@ -402,7 +196,7 @@ if($scope.currentUser.id) {
       $scope.medications.medication_type_id = 2
     }
 
-    if($scope.medications.medication_type_id === 1) {
+    if($scope.medications.medication_type_id === 1 ) {
       $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/currentmedication/new`,{
         brandname: $scope.medications.brandname,
         drugname: $scope.medications.drugname,
@@ -414,20 +208,21 @@ if($scope.currentUser.id) {
       .catch((err) =>{
         console.log("err",err);
       })
-  }
-  else {
-    $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/dismedication/new`,{
-        brandname: $scope.medications.brandname,
-        drugname: $scope.medications.drugname,
-        dosage: $scope.medications.dosage,
-        route: $scope.medications.route,
-        medication_type_id: $scope.medications.medication_type_id,
-        patient_id: $scope.currentUser.id
-      })
-      .catch((err) =>{
-        console.log("err",err);
-      })
-  }
+    }
+    else {
+      $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/dismedication/new`,{
+          brandname: $scope.medications.brandname,
+          drugname: $scope.medications.drugname,
+          dosage: $scope.medications.dosage,
+          route: $scope.medications.route,
+          medication_type_id: $scope.medications.medication_type_id,
+          patient_id: $scope.currentUser.id
+        })
+        .catch((err) =>{
+          console.log("err",err);
+        })
+    }
+  $location.url('/profile')
  }
  }
  else {
