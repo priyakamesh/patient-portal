@@ -48,8 +48,7 @@ app.use(session({
   saveUninitialized: false,
   secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
 }));
-app.use(express.static('client'))
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 require('./lib/passport-strategies')
 app.use(passport.initialize())
 app.use(passport.session())
