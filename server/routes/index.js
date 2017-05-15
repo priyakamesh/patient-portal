@@ -20,7 +20,7 @@ router.get('/',function (req,res) {
  *         type: string
  *       speciality:
  *         type: string
- *       facilityaddress:
+ *       address:
  *         type: string
  *       phonenumber:
  *         type: string
@@ -42,6 +42,26 @@ router.get('/',function (req,res) {
  *           $ref: '#/definitions/Doctor'
  */
     "list of doctors": "http://localhost:3000/api/v1/doctors",
+/**
+ * @swagger
+ * /api/v1/doctors/new:
+ *   post:
+ *     tags:
+ *       - Doctors
+ *     description: Creates a new doctor
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - fullname: doctor
+ *         description: Doctor object
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Doctor'
+ *     responses:
+ *       200:
+ *         description: Successfully created
+ */
     "addDoctor": "http://localhost:3000/api/v1/doctors/new",
     "patient_doctor": "http://localhost:3000/api/v1/patient/:id/doctor",
     "allergy" : "http://localhost:3000/api/v1/allergy",
