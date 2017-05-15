@@ -1,0 +1,30 @@
+
+<div class="login float">
+  <div class="row">
+      <form class="col s12">
+        <div class="row" >
+        <div class="main">
+          <h5 class="tooltipped" data-position="top" data-delay="50" data-tooltip="HealthCare Support Portal facilitates better communication with your physician's office by providing convenient 24 x 7 access from the comfort and privacy of your own home or office.">Patient Portal</h5>
+        </div>
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" ng-model="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
+            <label for="email" data-error = "wrong">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate" ng-model="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn blue darken-4" ng-click="login()">Login</a>
+            <!-- <a class="waves-effect waves-light btn blue darken-4
+              " ng-click = "forgotPassword()">Forgot Password ?</a> -->
+            <p>New User ?<a href="#/register">Register Here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

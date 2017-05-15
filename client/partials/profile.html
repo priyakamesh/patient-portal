@@ -1,0 +1,202 @@
+<div class="navbar-fixed ">
+    <nav>
+    <a data-activates="slide-out" class="button-collapse" href="#/profile"><i class="material-icons">menu</i></a>
+      <div class="nav-wrapper navColor">
+
+      <ul class="right  hide-on-med-and-down">
+        <li>{{currentUser.email}}</li>
+        <li> <a href="#/logout">Logout</a></li>
+      </ul>
+
+      </div>
+    </nav>
+    <ul class="side-nav" id="slide-out">
+        <li> <a href="#/logout">Logout</a></li>
+      </ul>
+  </div>
+
+  <div class="welcome">
+    <h5 style = "text-transform: uppercase;">Hi {{currentUser.firstname}} {{currentUser.lastname}},</h5>
+    <p>
+
+    Welcome to the Patient Portal Managing your healthcare is an important step.. With this website, you will be able to manage your healthcare information by giving you the ability to: 1. Provide up-to-date personal and medical information. 2. Obtain, review, and print clinic lab results and medical information for your records to ,provide you with your healthcare information. 3. Search educational material to help you improve and manage your health. If you wish to speak to someone at our practice regarding an urgent care situation please call ***-***-**** to schedule an appointment or to reach the doctor that is on call.</p>
+  </div>
+  <div style="width:150px; margin-top:65px;" class="side-nav fixed">
+  <button ng-click="activePortalButton('Dashboard')" class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Personal Information</button>
+  <button ng-click="activePortalButton('Doctor')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Doctor</button>
+  <button ng-click="activePortalButton('Insurance')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Insurance</button>
+  <button ng-click="activePortalButton('Medication')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Medication</button>
+  <button ng-click="activePortalButton('Release')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Release of Medical Records</button>
+  <button ng-click="activePortalButton('History')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">History</button>
+  <button ng-click="activePortalButton('Allergy')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Allergy</button>
+  <button ng-click="activePortalButton('VisitSummary')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Visit Summary</button>
+  <!-- <button ng-click ='goTo()' class="sideButton" > Update Information</button> -->
+</div>
+<div id = "Dashboard" ng-if ="active_portal == 'Dashboard'" >
+  <div class="card block" >
+   <form class="col s12">
+                <h5>Personal Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" ng-model="currentUser.firstname">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate" ng-model="currentUser.lastname">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-field col s6">
+                      <input  type="date" ng-model="currentUser.dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="ethnicity" type="text" class="validate" list="listOfEthnicity" ng-model="currentUser.ethnicity">
+                      <label for="ethnicity">Ethnicity</label>
+                      <datalist id="listOfEthnicity">
+                        <option> white</option>
+                        <option>black</option>
+                        <option>American Indian/Alaska Native</option>
+                        <option> Asian</option>
+                        <option> Native Hawaiian/Other Pacific Islander.</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="address" type="text" class="validate" ng-model="currentUser.address">
+                      <label for="address">Address</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phone" type="text" class="validate" ng-model="currentUser.phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
+                      <label for="phone" data-error="wrong">Phone Number</label>
+                    </div>
+                  </div>
+                  <button ng-click = "personal()">Submit</button>
+              </form>
+    <!-- <div class= "col s12 m6 center-align medication card-content" >
+
+      <h5 class="card-title">Personal Information</h5>
+      <h6> Full Name: {{currentUser.firstname}}  {{currentUser.lastname}}</h6>
+      <p> Email: {{currentUser.email}}</p>
+      <div> Date of Birth: {{currentUser.dob}}</div>
+      <div>Ethnicity: {{currentUser.ethnicity}}</div>
+      <div>Address: {{currentUser.address}}</div>
+      <div>Contact Information: {{currentUser.phonenumber}}</div>
+      <button class="activator">Edit Information</button>
+
+    </div>
+     <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Personal Information<i class="material-icons right">close</i></span>
+      <input type="text" ng-model="currentUser.firstname" value="currentUser.firstname" class="input-field col s6 l6">
+      <input type="text" ng-model="currentUser.lastname" value="currentUser.lastname" class=" input-field col s6 l6">
+      <input type="text" ng-model="currentUser.dob" value="currentUser.dob" class=" input-field col s6 l6">
+      <input type="text" ng-model="currentUser.ethnicity" value="currentUser.ethnicity" class=" input-field col s6 l6">
+      <input type="text" ng-model="currentUser.address" value="currentUser.address" class=" input-field col s6 l6">
+      <input type="text" ng-model="currentUser.phonenumber" value="currentUser.phonenumber" class=" input-field col s6 l6">
+      <button ng-click = "personal()">Submit</button>
+    </div> -->
+  </div>
+</div>
+<div id = "Doctor" ng-if ="active_portal == 'Doctor'" >
+  <div class="card block" >
+    <div class= "col s12 m6 center-align medication" >
+      <h5 class="card-title">Doctor Information</h5>
+      <div ng-repeat = "doctor in patientDoctor">
+      <div id="{{doctor.id}}">
+      <h6> Full Name: {{doctor.fullname}}</h6>
+      <p>Speciality: {{doctor.speciality}}</p>
+      <p>Facility Address: {{doctor.address}}</p>
+      <p>Contact Information: {{doctor.phonenumber}}</p>
+      <button ng-click = "deleteDoctor(doctor.id)">Remove</button>
+      </div>
+      </div>
+      <button ng-click="addDoctor()">ADD Doctor</button>
+    </div>
+  </div>
+</div>
+<div id = "Insurance" ng-if ="(active_portal === 'Insurance')" >
+  <div class="card block">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Insurance Information</h5>
+      <div ng-repeat = "insurance in patientInsurance" class="medication" ng-if ="(insurance.insuranceprovider !== null)">
+      <div id="{{insurance.id}}">
+        <div>Insurance provider: {{insurance.insuranceprovider}}</div>
+        <div>Group ID: {{insurance.groupid}}</div>
+        <div>Subscriber ID: {{insurance.subscriberid}}</div>
+        <div ng-if = "insurance.insurance_type_id === 1">Insurance Type: Primary</div>
+        <div ng-if = "insurance.insurance_type_id === 2">Insurance Type: Secondary</div>
+        <button ng-click = "remove(insurance.id)">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="Medication" ng-if ="active_portal == 'Medication'">
+  <div class="card block">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Medication Information</h5>
+      <div ng-repeat = "medication in medications" class="medication" ng-if="(medication.brandname !== null)">
+      <div id="{{medication.id}}">
+        <h4>{{medication.brandname}}</h4>
+        <p>{{medication.drugname}}</p>
+        <p>{{medication.dosage}}</p>
+        <p>{{medication.route}}</p>
+        <p ng-if="medication.medication_type_id ===1">Current Medication</p>
+        <p ng-if="medication.medication_type_id ===2">Discontinued Medication</p>
+        <button ng-click="removeMedication(medication.id, medication.medication_type_id)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="Release"  ng-if ="active_portal == 'Release'">
+  <div class="card block">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Release of Medical Information</h5>
+      <div ng-if ="releasePerson.length === 0">No Release person added to your account.</div>
+      <div ng-repeat = "person in releasePerson" class="medication">
+        <div id="{{person.id}}">
+          <div> Full Name: {{person.fullname}}</div>
+          <div>Relation: {{person.relation}}</div>
+          <div>Contact Information: {{person.phonenumber}}</div>
+          <button ng-click="removeRelease(person.id)">Remove</button>
+        </div>
+      </div>
+      <button ng-click = 'release()'>Add Release Person</button>
+    </div>
+  </div>
+</div>
+<div id="History"  ng-if ="active_portal == 'History'">
+  <div class="card block">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Social and Family History</h5>
+      <div ng-repeat = "history in histories" class="medication">
+      {{history.name}}</div>
+    </div>
+    <button ng-click="history()">Add History</button>
+  </div>
+</div>
+<div id="Allergy"  ng-if ="active_portal == 'Allergy'">
+  <div class="card block">
+    <div class= "col s12 m6 center-align">
+      <h5 class="card-title">Allergy Details</h5>
+      <div ng-repeat = "allergy in allergys" class="medication">
+      {{allergy.name}}</div>
+    </div>
+    <button ng-click="allergy()">Add Allergy</button>
+  </div>
+</div>
+<div id = "VisitSummary"  ng-if ="active_portal == 'VisitSummary'">
+  <div class="card block">
+     <div class= "col s12 m6 center-align">
+       <h5 class="card-title">Visit Summary</h5>
+       <p class="medication">No visit summary available.</p>
+     </div>
+  </div>
+</div>
+<!-- Use any element to open the sidenav -->

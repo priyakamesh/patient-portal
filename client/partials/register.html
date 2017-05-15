@@ -1,0 +1,31 @@
+<h1>Patient Portal</h1>
+<div class="login">
+  <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input  type="email" ng-model = "user_email" id="email" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+          </div>
+          <div class="row">
+          <div class="input-field col s6">
+            <input  type="password" ng-model = "user_password" id="password" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="password" type="password" ng-model = "user_confirmPassword" ng-match="user_password" required  name="myConfirmField">
+            <label for="password">Confirm Email</label>
+            <span ng-show="user_password !== user_confirmPassword">Passwords have to match!</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <a class="waves-effect waves-light btn blue darken-4" ng-click="register()">Register</a>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

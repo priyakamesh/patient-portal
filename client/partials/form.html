@@ -1,0 +1,307 @@
+<!-- http://mgonto.github.io/angular-wizard/ -->
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper navColor">
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <!-- <a href="#!" class="brand-logo">Logo</a> -->
+        <ul class="right">
+          <li><a href="#/profile">PROFILE</a></li>
+
+          <li><a href="#/logout">LOGOUT</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="#/profile">PROFILE</a></li>
+
+          <li><a href="#/logout">LOGOUT</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<div id="main_content_wrap" class="outer form">
+      <section id="main_content" class="inner main-inner" ng-app="wizard-sample" ng-controller="PublicCtrl">
+        <wizard on-finish="finished()">
+
+          <wz-step wz-title="Personal Information">
+              <div class="row card">
+                <form class="col s12">
+                <h5>Personal Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name" type="text" class="validate" ng-model="currentUser.firstname">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate" ng-model="currentUser.lastname">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-field col s6">
+                      <input  type="date" class="datepicker" ng-model="currentUser.dob" required min="1940-01-01" max="{{date | date:'yyyy-MM-dd'}}">
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="ethnicity" type="text" class="validate" list="listOfEthnicity" ng-model="currentUser.ethnicity">
+                      <label for="ethnicity">Ethnicity</label>
+                      <datalist id="listOfEthnicity">
+                        <option> white</option>
+                        <option>black</option>
+                        <option>American Indian/Alaska Native</option>
+                        <option> Asian</option>
+                        <option> Native Hawaiian/Other Pacific Islander.</option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="address" type="text" class="validate" ng-model="currentUser.address">
+                      <label for="address">Address</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phone" type="text" class="validate" ng-model="currentUser.phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
+                      <label for="phone" data-error="wrong">Phone Number</label>
+                    </div>
+                  </div>
+              </form>
+              </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Facility Information">
+            <div class="row">
+               <form class="col s12">
+                <h5>Facility Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="full_name" type="text" class="validate" list="doctorname"  ng-model="doctorname.fullname" ng-change = "keydown()">
+                      <label for="full_name">Doctor Name</label>
+                      <datalist id="doctorname">
+                        <div ng-repeat = "doctor in doctorname">
+                          <option value="{{doctor.fullname}}"></option>
+                        </div>
+
+                      </datalist>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="doctor_speciality" type="text" class="validate" list="speciality" ng-model = "doctorSpeciality">
+                      <label for="doctor_speciality">Speciality</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="facility_address" type="text" class="validate" list="facilityaddress" ng-model="doctorAddress">
+                      <label for="facility_address">Facility Address</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phone" type="text" class="validate" list="phonenumber" ng-model="doctorPhonenumber">
+                      <label for="phone">Phone Number</label>
+                      <datalist id="phonenumber">
+                        <div ng-repeat = "doctor in doctorname">
+                          <option value="{{doctor.phonenumber}}">
+                        </div>
+                      </datalist>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Release of Medical Information">
+            <div class="row">
+              <form class="col s12">
+                <h5>Release of Medical Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="fullname" type="text" class="validate" ng-model="releasePerson.fullname">
+                      <label for="fullname">Full Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="relation" type="text" class="validate" ng-model="releasePerson.relation">
+                      <label for="relation">Relation</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="phonenumber" type="text" class="validate" ng-model="releasePerson.phone" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$">
+                      <label for="phonenumber" data-error="wrong">Phone Number</label>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title="Allergy">
+            <div class="row">
+              <form class="col s12 ">
+                <h5>Allergy</h5>
+                  <div class="row container">
+                    <div class="fixed">
+                      <h6>Food Allergy</h6>
+                      <div  ng-repeat = "foodallergy in foodallergys">
+                        <input type= "checkbox" value= "{{foodallergy.id}}" id="{{foodallergy.name}}" name="foodallergys">
+                        <label for="{{foodallergy.name}}" class="sm">{{foodallergy.name}}</label>
+                      </div>
+                      </div>
+                      <div class="flex-item">
+                      <h6>Drug Allergy</h6>
+                      <div  ng-repeat = "drugallergy in drugallergys">
+                        <input type= "checkbox" value= "{{drugallergy.id}}" id="{{drugallergy.name}}" name="drugallergys">
+                        <label for="{{drugallergy.name}}" class="sm">{{drugallergy.name}}</label>
+                      </div>
+                      </div>
+                  </div>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title=" Family History">
+            <div class="row">
+              <form class="col s12">
+                  <div class="row">
+                    <div>
+                      <h5>Family History</h5>
+                      <div  ng-repeat = "familyHistory in familyHistories" class="check1">
+                        <input type= "checkbox" value= "{{familyHistory.id}}" id="{{familyHistory.name}}" name="familyHistories">
+                        <label for="{{familyHistory.name}}" class="sm">{{familyHistory.name}}</label>
+                      </div>
+                     </div>
+                      <!-- <div> -->
+
+                      <!-- <input type="text" id="socialhistory" class="validate" list="frequency" placeholder="Frequency" ng-model = "histories.frequency" >
+                      <datalist id="frequency">
+                          <option value = "per year"></option>
+                          <option value = "per month"></option>
+                          <option value = "per week"></option>
+                          <option value = "per day"></option>
+                          <option value = "per hour"></option>
+                        </datalist>
+                         <input type="text" id="socialhistory" class="validate" list="unit" ng-model = "histories.unit" placeholder="Unit">
+                       <datalist id="unit">
+                          <option value = "one packet"></option>
+                          <option value = "one piece"></option>
+                          <option value = "one ounce"></option>
+                        </datalist> -->
+                      <!-- </div> -->
+                  </div>
+              </form>
+            </div>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title = "Social History">
+            <div class="row">
+              <form class="col s12">
+                  <div class="row">
+                    <h5>Social History</h5>
+                      <div  ng-repeat = "socialHistory in socialHistories" class="check1">
+                        <input type= "checkbox" value= "{{socialHistory.id}}" id="{{socialHistory.name}}" name="socialHistories">
+                        <label for="{{socialHistory.name}}" class="sm">{{socialHistory.name}}{{socialHistory.id}}</label>
+                      </div>
+                  </div>
+              </form>
+             </div>
+             <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <wz-step wz-title = "Medication">
+            <div class="row">
+              <form class="col s12">
+                <h5>Medication</h5>
+                <div class="row">
+                  <input type="text" id="brandname" ng-model = "medications.brandname">
+                  <label for="brandname">Brand Name</label>
+                  <!-- <a ng-click="searchDrug()">Search</a> -->
+                </div>
+                <div class="row">
+                  <input type="text" id="drugname" ng-model = "medications.drugname">
+                  <label for="drugname">Drug Name</label>
+                </div>
+                <div class="row">
+                  <input type="text" id="dosage" ng-model = "medications.dosage">
+                  <label for="dosage">Dosage</label>
+                </div>
+                <div class="row">
+                  <input type="text" id="route" ng-model = "drugname" list="medication_route" ng-model="medications.route">
+                  <label for="route">Route</label>
+                  <datalist id="medication_route">
+                    <option value="Oral"></option>
+                    <option value="AURICULAR (OTIC)"></option>
+                    <option value="OPHTHALMIC"></option>
+                    <option value="INTRAVENOUS"></option>
+                    <option value="INHALATION"></option>
+                  </datalist>
+                </div>
+                <div class="row">
+                  <input type="text" id="medication_type", list="medicationType" ng-model = "medications.medication_type">
+                  <label for="medication_type">Medication Type</label>
+                  <datalist id="medicationType">
+                    <option>Current</option>
+                    <option>Discontinued</option>
+                  </datalist>
+                </div>
+              </form>
+              <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+            </div>
+          </wz-step>
+          <wz-step wz-title="Insurance Details">
+            <div class="row">
+               <form class="col s12" ng-submit="finish()">
+                <h5>Insurance Information</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="primaryInsurance" type="text" class="validate" ng-model="patientInsurance.insuranceprovider">
+                      <label for="primaryInsurance">Insurance Provider</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="groupid" type="text" class="validate" ng-model="patientInsurance.groupid" >
+                      <label for="groupid">GroupID</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="subscriberid" type="text" class="validate" ng-model="patientInsurance.subscriberid">
+                      <label for="subscriberid">SubscriberID</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="insuranceType" type="text" class="validate" list="insurance_type" ng-model="patientInsurance.insurance_type">
+                      <label for="insuranceType">insuranceType</label>
+                    </div>
+                    <datalist id="insurance_type">
+                      <option>Primary</option>
+                      <option>Secondary</option>
+                    </datalist>
+                  </div>
+                  <button type = "submit" class="waves-effect waves-light">Finish</button>
+
+              </form>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="NEXT" />
+          </wz-step>
+          <!-- <wz-step wz-title="Finish">
+            <h1>Finish him</h1>
+            <p>Finally this ends!</p>
+            <input type="button" wz-previous="logStep()" value="BACK" />
+            <input type="button" wz-next="logStep()" value="END" />
+            <input type="button" ng-click="goBack()" value="Click here to start again" />
+            <input type="button" wz-reset value="Click here to reset" />
+          </wz-step> -->
+        </wizard>
+      </section>
+    </div>
