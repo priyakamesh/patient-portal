@@ -122,7 +122,7 @@
   <div class="card block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Insurance Information</h5>
-      <div ng-repeat = "insurance in patientInsurance" class="medication">
+      <div ng-repeat = "insurance in patientInsurance" class="medication" ng-if ="(insurance.insuranceprovider !== null)">
       <div id="{{insurance.id}}">
         <div>Insurance provider: {{insurance.insuranceprovider}}</div>
         <div>Group ID: {{insurance.groupid}}</div>
