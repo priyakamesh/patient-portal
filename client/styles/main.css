@@ -63,6 +63,7 @@ visibility:visible;
 }
 .flex-item{
     flex-grow: 1;
+    width: 400px;
 }
 .check {
   display: block;

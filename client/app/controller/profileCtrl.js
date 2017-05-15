@@ -96,18 +96,18 @@ patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFa
         $scope.personal = () =>{
           $scope.currentUser.dob = JSON.stringify($scope.currentUser.dob)
           $scope.currentUser.dob = $scope.currentUser.dob.split("T",2)[0].slice(1)
-        $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
-          firstname: $scope.currentUser.firstname,
-          lastname: $scope.currentUser.lastname,
-          dob: $scope.currentUser.dob,
-          ethnicity: $scope.currentUser.ethnicity,
-          address: $scope.currentUser.address,
-          phonenumber: $scope.currentUser.phonenumber
-        })
-        .then((data) =>{
-          Materialize.toast("Updated personal Information successfully",2000)
-        })
-      }
+          $http.patch(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}`,{
+            firstname: $scope.currentUser.firstname,
+            lastname: $scope.currentUser.lastname,
+            dob: $scope.currentUser.dob,
+            ethnicity: $scope.currentUser.ethnicity,
+            address: $scope.currentUser.address,
+            phonenumber: $scope.currentUser.phonenumber
+          })
+          .then((data) =>{
+            Materialize.toast("Updated personal Information successfully",2000)
+          })
+        }
       $scope.deleteDoctor = (id) =>{
         $http.delete(`http://localhost:3000/api/v1/deletePatientDoctor/${$scope.currentUser.id}/${id}`)
         .then((data) => {
@@ -123,6 +123,15 @@ patient_portal.controller('ProfileCtrl', function($location,$scope,$http, AuthFa
         })
       }
       $scope.addDoctor = () =>{
+        $location.url("/form")
+      }
+      $scope.release = () =>{
+        $location.url("/form")
+      }
+      $scope.history = () =>{
+        $location.url("/form")
+      }
+      $scope.allergy = () =>{
         $location.url("/form")
       }
       $scope.remove = (id) =>{

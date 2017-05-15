@@ -22,7 +22,7 @@
     Welcome to the Patient Portal Managing your healthcare is an important step.. With this website, you will be able to manage your healthcare information by giving you the ability to: 1. Provide up-to-date personal and medical information. 2. Obtain, review, and print clinic lab results and medical information for your records to ,provide you with your healthcare information. 3. Search educational material to help you improve and manage your health. If you wish to speak to someone at our practice regarding an urgent care situation please call ***-***-**** to schedule an appointment or to reach the doctor that is on call.</p>
   </div>
   <div style="width:150px; margin-top:65px;" class="side-nav fixed">
-  <button ng-click="activePortalButton('Dashboard')" class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Dashboard</button>
+  <button ng-click="activePortalButton('Dashboard')" class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Personal Information</button>
   <button ng-click="activePortalButton('Doctor')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Doctor</button>
   <button ng-click="activePortalButton('Insurance')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Insurance</button>
   <button ng-click="activePortalButton('Medication')"  class="sideButton tooltipped" data-position="right" data-delay="50" data-tooltip="Click to Expand">Medication</button>
@@ -76,6 +76,7 @@
                       <label for="phone" data-error="wrong">Phone Number</label>
                     </div>
                   </div>
+                  <button ng-click = "personal()">Submit</button>
               </form>
     <!-- <div class= "col s12 m6 center-align medication card-content" >
 
@@ -139,7 +140,7 @@
   <div class="card block">
     <div class= "col s12 m6 center-align">
       <h5 class="card-title">Medication Information</h5>
-      <div ng-repeat = "medication in medications" class="medication">
+      <div ng-repeat = "medication in medications" class="medication" ng-if="(medication.brandname !== null)">
       <div id="{{medication.id}}">
         <h4>{{medication.brandname}}</h4>
         <p>{{medication.drugname}}</p>
@@ -166,7 +167,7 @@
           <button ng-click="removeRelease(person.id)">Remove</button>
         </div>
       </div>
-
+      <button ng-click = 'release()'>Add Release Person</button>
     </div>
   </div>
 </div>
@@ -177,6 +178,7 @@
       <div ng-repeat = "history in histories" class="medication">
       {{history.name}}</div>
     </div>
+    <button ng-click="history()">Add History</button>
   </div>
 </div>
 <div id="Allergy"  ng-if ="active_portal == 'Allergy'">
@@ -186,6 +188,7 @@
       <div ng-repeat = "allergy in allergys" class="medication">
       {{allergy.name}}</div>
     </div>
+    <button ng-click="allergy()">Add Allergy</button>
   </div>
 </div>
 <div id = "VisitSummary"  ng-if ="active_portal == 'VisitSummary'">

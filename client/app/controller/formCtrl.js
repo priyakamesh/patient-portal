@@ -36,7 +36,6 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
           console.log("err",err);
         })
   }
-
     $http.get(`http://localhost:3000/api/v1/insurance/${$scope.currentUser.id}`)
     .then((data) =>{
       console.log("data",data);
@@ -158,29 +157,33 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
             Materialize.toast(`${$scope.releasePerson.fullname} is already in your account`,2000)
           })
       }
+      else{
+        console.log("no releasePerson found");
+      }
     $scope.patientAllergys = [];
-      $('input[type=checkbox]:checked').map(function() {
+      $('input[name="foodallergys"]:checked').map(function() {
                   $scope.patientAllergys.push($(this).val());
       });
-      if($scope.patientAllergys.lemgth >0){
+      $('input[name="drugallergys"]:checked').map(function() {
+                  $scope.patientAllergys.push($(this).val());
+      });
+      if($scope.patientAllergys.length >0){
         $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/allergy`,{
           allergy_id : $scope.patientAllergys
         })
         .catch((err) =>{
-          Materialize.toast("Already added to your account", 2000);
+          console.log("err",err);
         })
       }
        $scope.patientHistory = [];
-      $scope.socialHistoryFreqUnit = [];
+
       $('input[name="familyHistories"]:checked').map(function() {
                   $scope.patientHistory.push($(this).val());
       });
       $('input[name="socialHistories"]:checked').map(function() {
-                  $scope.socialHistoryFreqUnit.push($(this).val());
+                  $scope.patientHistory.push($(this).val());
       });
-      $scope.socialHistoryFreqUnit.push($scope.histories.frequency)
-      $scope.socialHistoryFreqUnit.push($scope.histories.unit)
-      $scope.patientHistory.push($scope.socialHistoryFreqUnit)
+
       if($scope.patientHistory.length > 0){
         $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/history`,{
           history_id : $scope.patientHistory

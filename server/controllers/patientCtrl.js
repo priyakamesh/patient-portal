@@ -128,7 +128,7 @@ module.exports.addManyHistory = ({params:{id},body},res,next) =>{
   let patient_id = id
   let pairs= []
   history.forEach(history =>{
-    pairs.push({patient_id:patient_id,history_id:history[0],frequency:history[1],unit:history[2]})
+    pairs.push({patient_id:patient_id,history_id:history_id})
   })
   Patient_history.addMany(pairs)
   .then(() =>{

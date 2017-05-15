@@ -143,7 +143,7 @@
           </wz-step>
           <wz-step wz-title="Allergy">
             <div class="row">
-              <form class="col s12">
+              <form class="col s12 ">
                 <h5>Allergy</h5>
                   <div class="row container">
                     <div class="fixed">
@@ -207,7 +207,7 @@
                     <h5>Social History</h5>
                       <div  ng-repeat = "socialHistory in socialHistories" class="check1">
                         <input type= "checkbox" value= "{{socialHistory.id}}" id="{{socialHistory.name}}" name="socialHistories">
-                        <label for="{{socialHistory.name}}" class="sm">{{socialHistory.name}}</label>
+                        <label for="{{socialHistory.name}}" class="sm">{{socialHistory.name}}{{socialHistory.id}}</label>
                       </div>
                   </div>
               </form>
