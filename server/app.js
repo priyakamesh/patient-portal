@@ -60,7 +60,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 // require('dotenv').config()
 app.use(bodyParser.json());
-
+app.use(express.static('client'))
 
 app.use('/api/v1/', routes)
 // serve swagger
