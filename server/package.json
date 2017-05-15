@@ -7,6 +7,8 @@
     "db:reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "start": "node bin/portal",
     "startdev": "nodemon bin/portal",
+     "deploy": "git push heroku master",
+    "postinstall": "bower install",
     "test": "nodemon --exec \"mocha --recursive\" -R list"
   },
   "repository": {
