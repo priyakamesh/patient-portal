@@ -35,7 +35,7 @@ visibility:visible;
    height: 50px;
 }
 .welcome {
-  margin: 50px auto auto 150px;
+  margin: 50px auto auto 350px;
 }
 .login {
   background-color: #fff;
@@ -58,8 +58,10 @@ visibility:visible;
     display: flex;
 }
 .fixed{
-    width: 200px;
+    width: 150px;
     height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .flex-item{
     flex-grow: 1;
@@ -97,7 +99,8 @@ label.sm:last-child:after {
 
 }
 .block {
-  margin: 50px 0 0 200px;
+  margin: 50px 0 0 250px;
+  box-shadow: 10px 10px 10px #888888;
   /*border: 1px solid darkblue;
   width:fit-content;
   width:-webkit-fit-content;
