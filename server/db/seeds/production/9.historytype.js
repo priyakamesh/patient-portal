@@ -1,4 +1,4 @@
-const historytype = require('../history_type')
+const historytype = require('../../history_type')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('history_type').del()

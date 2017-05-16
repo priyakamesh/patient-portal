@@ -1,4 +1,4 @@
-const insurance = require('../insurance')
+const insurance = require('../../insurance')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('insurance').del()
