@@ -65,7 +65,9 @@ visibility:visible;
 }
 .flex-item{
     flex-grow: 1;
-    width: 400px;
+    width: 300px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .check {
   display: block;
