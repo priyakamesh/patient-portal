@@ -41,7 +41,7 @@ router.get('/',function (req,res) {
  *         schema:
  *           $ref: '#/definitions/Doctor'
  */
-    "list of doctors": "http://localhost:3000/api/v1/doctors",
+    "list of doctors": "https://patient-portal-api.herokuapp.com/api/v1/doctors",
 /**
  * @swagger
  * /api/v1/doctors/new:
