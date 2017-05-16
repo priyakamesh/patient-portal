@@ -48,7 +48,10 @@ app.use(session({
   saveUninitialized: false,
   secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('client'))
+
 require('./lib/passport-strategies')
 app.use(passport.initialize())
 app.use(passport.session())
@@ -58,9 +61,8 @@ app.use(passport.session())
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
-// require('dotenv').config()
+require('dotenv').config()
 app.use(bodyParser.json());
-app.use(express.static('client'))
 
 app.use('/api/v1/', routes)
 // serve swagger
