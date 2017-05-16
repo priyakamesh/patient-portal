@@ -146,7 +146,7 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
           console.log("err",err);
         })
       }
-      if($scope.releasePerson.fullname !== null) {
+      if($scope.releasePerson.fullname !== undefined) {
         $http.post(`http://localhost:3000/api/v1/patient/${$scope.currentUser.id}/release_med_info/new`,{
             fullname: $scope.releasePerson.fullname,
             relation: $scope.releasePerson.relation,
@@ -195,8 +195,10 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
      $scope.medications.route = $("#route").val()
       if ($scope.medications.medication_type === 'Current') {
         $scope.medications.medication_type_id = 1
-      } else {
+      } else if($scope.medications.medication_type === 'Discontinued') {
         $scope.medications.medication_type_id = 2
+      } else {
+        console.log("No medications selected")
       }
 
       if($scope.medications.medication_type_id === 1 ) {
@@ -212,7 +214,7 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
           console.log("err",err);
         })
       }
-      else {
+      else if($scope.medications.medication_type_id === 2)  {
         $http.post(`http://localhost:3000/api/v1/patients/${$scope.currentUser.id}/dismedication/new`,{
             brandname: $scope.medications.brandname,
             drugname: $scope.medications.drugname,
@@ -224,6 +226,8 @@ patient_portal.controller('FormCtrl', function($scope, AuthFactory,$location, $h
           .catch((err) =>{
             console.log("err",err);
           })
+      } else {
+        console.log("No medication selected");
       }
     $location.url('/profile')
    }
