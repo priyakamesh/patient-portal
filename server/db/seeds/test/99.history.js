@@ -1,4 +1,4 @@
-const history = require('../history')
+const history = require('../../history')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('history').del()

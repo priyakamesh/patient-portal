@@ -1,4 +1,4 @@
-const patient_history = require('../patient_history')
+const patient_history = require('../../patient_history')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('patient_history').del()

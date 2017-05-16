@@ -1,4 +1,4 @@
-const medication_type = require('../medication_type')
+const medication_type = require('../../medication_type')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('medication_type').del()

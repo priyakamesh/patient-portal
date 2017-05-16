@@ -1,4 +1,4 @@
-const doctors = require('../doctors')
+const doctors = require('../../doctors')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('doctors').del()

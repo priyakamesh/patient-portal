@@ -1,4 +1,4 @@
-const patient_allergy = require('../patient_allergy')
+const patient_allergy = require('../../patient_allergy')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('patient_allergy').del()

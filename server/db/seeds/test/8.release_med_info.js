@@ -1,4 +1,4 @@
-const release_med_info = require('../release_med_info')
+const release_med_info = require('../../release_med_info')
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('release_med_info').del()
