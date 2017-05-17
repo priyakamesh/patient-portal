@@ -1,7 +1,7 @@
 # patient-portal
 
-Patient portal is a responsive app, which is a medical home on the web.
-
+Patient portal is a web app, which is a medical home on the web.
+Patient-portal-ui app is here:- https://github.com/priyakamesh/patient-portal-ui
 Feature:- Patient Portal app has  all the patient information.
 Different modules in Patient Portal are:-
 Login : Custom login
@@ -15,3 +15,4 @@ Visit Summary (this is the place where Doctor/ Clinic will do push request.)
 Link to Trello: https://trello.com/b/wjLmdaZA/patient-portal
 
 Link to Moqup: https://app.moqups.com/krishnapriyakamesh@gmail.com/tBBiieWyLY/view/page/abafec954
+<img src="pp-erd.jpg" height="300px" width="600px">
