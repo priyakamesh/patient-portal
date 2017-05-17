@@ -15,4 +15,4 @@ Visit Summary (this is the place where Doctor/ Clinic will do push request.)
 Link to Trello: https://trello.com/b/wjLmdaZA/patient-portal
 
 Link to Moqup: https://app.moqups.com/krishnapriyakamesh@gmail.com/tBBiieWyLY/view/page/abafec954
-<img src="pp-erd.jpg" height="300px" width="600px">
+<img src="pp-erd.jpg" height="500px" width="600px">
