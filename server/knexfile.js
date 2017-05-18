@@ -2,6 +2,16 @@
 
 
 module.exports = {
+   test: {
+    client: 'pg',
+    connection: 'postgres://localhost/patient_portal_test',
+    migrations: {
+      directory: __dirname + '/db/migrations'
+    },
+    seeds: {
+      directory: __dirname + '/db/seeds/test'
+    }
+  },
 
   development: {
     client: 'postgresql',

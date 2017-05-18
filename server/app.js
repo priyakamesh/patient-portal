@@ -37,25 +37,25 @@ var swaggerSpec = swaggerJSDoc(options);
 app.set('view engine', 'pug');
 //middlewaes
 app.use(cors())
-app.use(cookieParser('secretpatient'));
-app.use(session({cookie: {maxAge: 600000}, secret: 'secretpatient', resave: true, saveUninitialized: false}));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({
-  store: new KnexSessionStore({
-    knex,
-    tablename: 'sessions'
-  }),
-  resave: false,
-  saveUninitialized: false,
-  secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
-}));
+// app.use(cookieParser('secretpatient'));
+// app.use(session({cookie: {maxAge: 600000}, secret: 'secretpatient', resave: true, saveUninitialized: false}));
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(session({
+//   store: new KnexSessionStore({
+//     knex,
+//     tablename: 'sessions'
+//   }),
+//   resave: false,
+//   saveUninitialized: false,
+//   secret: process.env.SESSION_SECRET || 'patientsupersecretkey'
+// }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('client'))
 
-require('./lib/passport-strategies')
-app.use(passport.initialize())
-app.use(passport.session())
+// require('./lib/passport-strategies')
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 // This 'if' statement prevents application log messages from
 // displaying in the stdout when the tests are run

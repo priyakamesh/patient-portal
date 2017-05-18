@@ -1,9 +1,15 @@
-const patients = require('../../patients')
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
+const bcrypt = require('bcryptjs');
+
+exports.seed = (knex, Promise) => {
   return knex('patients').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('patients').insert(patients);
-    });
+  .then(() => {
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync('priya', salt);
+    return Promise.join(
+      knex('patients').insert({
+        email: 'michael@gmail.com',
+        password: hash
+      })
+    );
+  });
 };

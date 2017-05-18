@@ -13,6 +13,7 @@ const { getPatient,
 updatePatient,
 addMany,
 addManyHistory,
+deleteManyHistory,
 logoutPatient}= require('../controllers/patientCtrl')
 
 const { getId, addPatientDoctor, deletePatientDoctor } = require('../controllers/patient_doctorCtrl')
@@ -234,7 +235,7 @@ router.get('/patient/:patient_id/doctor', getAllDoctor)
  *         schema:
  *           $ref: '#/definitions/Patient'
  */
-router.get('/patient/:email', getPatientId)
+router.get('/patient/email/:email', getPatientId)
 router.patch('/patient/:id', updatePatient)
 router.get('/patient/:patient_id/doctor',getId)
 /**
@@ -323,6 +324,7 @@ router.post('/patient/:id/allergy',addMany)
  */
 
 router.post('/patient/:id/history',addManyHistory)
+// router.post('/patient/:id/deletehistory',deleteManyHistory)
 router.post('/patient/logout/:id', logoutPatient)
 // router.get('/foodallergy/:patient_id', getFoodAllergy)
 // router.get('/drugallergy/:patient_id', getDrugAllergy)

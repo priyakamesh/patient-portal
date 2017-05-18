@@ -1,7 +1,8 @@
 'use strict'
 
-const { bookshelf } = require('../db/database')
-const { compare } = require('bcryptjs');
+const bcrypt = require('bcryptjs')
+const {bookshelf, knex} = require('../db/database')
+const localAuth = require('../auth/local')
 
 require('./patient_allergy')
 require('./allergy')
@@ -13,24 +14,42 @@ const Patient = bookshelf.Model.extend({
   allergy: function() { return this.belongsToMany('Allergy').through('Patient_allergy')},
   history: function() {return this.belongsToMany('History').through('Patient_history')},
   doctor: function() {return this.belongsToMany('Doctor').through('Patient_doctor')},
-  bcrypt: { field: 'password'},
-  comparePass: function (passwordStr) {
-    console.log("password String from user", passwordStr );
-    console.log("user", this.attributes);
-    return compare(passwordStr, this.attributes.password)
-  }
+  // bcrypt: { field: 'password'},
+  // comparePass: function (passwordStr) {
+  //   console.log("password String from user", passwordStr );
+  //   console.log("user", this.attributes);
+  //   return compare(passwordStr, this.attributes.password)
+  // }
 },{
-  findOneByEmail: function (email) {
-    return this.forge({email})
-    .fetch()
-    .then( (user) => {
-      console.log("Got User", user.get('email'));
-      return user;
+  // findOneByEmail: function (email) {
+  //   return this.forge({email})
+  //   .fetch()
+  //   .then( (user) => {
+  //     console.log("Got User", user.get('email'));
+  //     return user;
+  //   })
+  //   .catch( () => {
+  //     console.log("yup, this happens when no email");
+  //     return (null)
+  //   });
+  // },
+  createUser: (req, res, next) => {
+    const salt = bcrypt.genSaltSync()
+    const hash = bcrypt.hashSync(req.body.password, salt)
+    return knex('patients')
+    .insert({
+      email: req.body.email,
+      password: hash
     })
-    .catch( () => {
-      console.log("yup, this happens when no email");
-      return (null)
-    });
+    .returning('*')
+  },
+  // method for comparing passwords
+  comparePass: (userPassword, databasePassword) => {
+    console.log("userPassword", userPassword);
+    console.log("databasePassword", databasePassword);
+    bcrypt.compareSync(userPassword, databasePassword,
+    (err, res) => {console.log("err", err); if (err) throw new Error('password does not match')
+    else return res})
   },
   getPatient: function (id){
     return this.where({id:id})
@@ -53,9 +72,11 @@ const Patient = bookshelf.Model.extend({
     })
   },
   getPatientId: function(email){
+    console.log("email",email);
     return this.where({email:email})
     .fetch()
     .then((patient) =>{
+      console.log("patient",patient);
       return patient
     })
     .catch((err) =>{

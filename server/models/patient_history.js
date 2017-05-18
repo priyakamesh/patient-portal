@@ -21,6 +21,10 @@ const Patient_history = bookshelf.Model.extend({
   addMany: function(rows) {
     return this.collection(rows).invokeThen('save')
   }
+  // ,
+  // deleteMany: function(rows) {
+  //   return this.collection(rows).invokeThen('destroy')
+  // }
 })
 
 module.exports = bookshelf.model('Patient_history', Patient_history)

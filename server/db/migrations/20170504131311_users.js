@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
     .createTable('patients', (t) =>{
       t.increments()
       t.string('email').notNullable().unique()
+      t.boolean('admin').notNullable().defaultTo(false);
+      t.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
       t.string('password')
       t.string('firstname')
       t.string('lastname')
